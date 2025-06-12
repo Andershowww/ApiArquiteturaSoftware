@@ -1,6 +1,23 @@
-Projeto criado em Java puro, SDK versao 21.0.7
+Tecnologia
+Java Puro (JDK 21.0.7)
 
---- para rodar----
+IDE Recomendada: Visual Studio Code
 
-IDE: Visual Studio Code (com plugin Debugger for Java)
-apos instalação é só rodar pelo debugger do lado direito superior da tela.
+Plugins necessários:
+
+- Java Extension Pack
+
+- Debugger for Java
+
+Sem uso de frameworks externos (como Spring)
+
+Arquitetura utilizada:
+MVC (Model - View - Controller) com separação de responsabilidades:
+
+*****************************************************************
+controller - Recebe requisições HTTP e responde à API REST	
+service - Contém a lógica de negócio e integração com APIs externas	
+repository - Simula persistência de dados (atualmente em memória)	
+model -	Define as entidades do domínio da aplicação	
+dto	- Define objetos para entrada de dados (input JSON)
+util - Utilitários auxiliares (ex: conversão JSON, resposta)
