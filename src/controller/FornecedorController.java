@@ -18,7 +18,7 @@ public class FornecedorController implements HttpHandler {
         if ("POST".equalsIgnoreCase(metodo)) {
             Scanner sc = new Scanner(ex.getRequestBody()).useDelimiter("\\A");
             String body = sc.hasNext() ? sc.next() : "";
-
+              sc.close();          
             try {
                 FornecedorDTO dto = JsonUtil.converterParaDTO(body);
                 Fornecedor fornecedor = service.cadastrarFornecedor(dto.cnpj);
