@@ -1,7 +1,7 @@
 import com.sun.net.httpserver.HttpServer;
 import controller.FornecedorController;
 
-import java.io.IOException;
+// import java.io.IOException;
 import java.net.InetSocketAddress;
 public class App {
     public static void main(String[] args) throws Exception {
