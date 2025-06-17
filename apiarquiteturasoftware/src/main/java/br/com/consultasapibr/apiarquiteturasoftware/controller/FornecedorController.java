@@ -1,9 +1,10 @@
-package controller;
+package br.com.consultasapibr.apiarquiteturasoftware.controller;
+
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import dto.FornecedorDTO;
-import model.Fornecedor;
-import service.FornecedorService;
+import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.service.FornecedorService;
 import util.JsonUtil;
 
 import java.io.IOException;

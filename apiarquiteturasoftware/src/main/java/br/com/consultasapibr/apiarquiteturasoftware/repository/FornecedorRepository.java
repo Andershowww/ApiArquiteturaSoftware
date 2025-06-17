@@ -1,9 +1,8 @@
-package repository;
+package br.com.consultasapibr.apiarquiteturasoftware.repository;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 
 public class FornecedorRepository {
     private final List<Fornecedor> lista = new ArrayList<>();
