@@ -1,5 +1,5 @@
 # Java
-bin/
+/bin/
 /out/
 /target/
 /*.class
@@ -17,3 +17,4 @@ Thumbs.db
 
 # Logs
 *.log
+
