@@ -1,4 +1,4 @@
-package repository;
+package br.com.consultasapibr.apiarquiteturasoftware.repository;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package service;
+package br.com.consultasapibr.apiarquiteturasoftware.service;
 
 import model.Fornecedor;
 import repository.FornecedorRepository;
