@@ -1,5 +1,5 @@
 # Java
-/bin/
+/legacy/bin/
 /out/
 /target/
 /*.class
@@ -9,7 +9,7 @@
 /*.iml
 
 # VSCode
-.vscode
+/.vscode/
 
 # Sistema operacional
 .DS_Store
@@ -17,4 +17,5 @@ Thumbs.db
 
 # Logs
 *.log
+
 
