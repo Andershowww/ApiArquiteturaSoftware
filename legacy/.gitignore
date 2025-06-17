@@ -5,7 +5,7 @@ bin/
 /*.class
 
 # IntelliJ IDEA
-.idea/
+../.idea/
 /*.iml
 
 # VSCode

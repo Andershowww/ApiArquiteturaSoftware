@@ -1,7 +1,7 @@
 package br.com.consultasapibr.apiarquiteturasoftware.service;
 
-import model.Fornecedor;
-import repository.FornecedorRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.repository.FornecedorRepository;
 
 import java.net.URI;
 import java.net.http.HttpClient;

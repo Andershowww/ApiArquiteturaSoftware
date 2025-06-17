@@ -1,7 +1,7 @@
 package util;
 import com.sun.net.httpserver.HttpExchange;
-import dto.FornecedorDTO;
-import model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 
 import java.io.IOException;
 import java.io.OutputStream;

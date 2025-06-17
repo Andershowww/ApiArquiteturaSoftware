@@ -3,7 +3,7 @@ package br.com.consultasapibr.apiarquiteturasoftware.controller;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorDTO;
-import model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 import br.com.consultasapibr.apiarquiteturasoftware.service.FornecedorService;
 import util.JsonUtil;
 

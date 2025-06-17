@@ -3,6 +3,27 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+# Compiled Java class files
+*.class
+
+# Build output
+bin/
+out/
+
+# Logs
+*.log
+
+# Local environment/properties (não versionar configs sensíveis/locais)
+src/main/resources/application.properties
+
+# SQLite database files (se geradas localmente pelo app)
+*.sqlite
+*.db
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -36,3 +57,12 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/.idea/
+
+# Arquivos temporários e backup
+*~
+*.swp
+
+# Arquivos de cobertura de teste
+coverage/
+jacoco.exec
