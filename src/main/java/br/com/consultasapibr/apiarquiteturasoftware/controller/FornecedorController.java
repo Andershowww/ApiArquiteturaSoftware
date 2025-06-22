@@ -1,39 +1,34 @@
 package br.com.consultasapibr.apiarquiteturasoftware.controller;
 
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
 import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 import br.com.consultasapibr.apiarquiteturasoftware.service.FornecedorService;
-import util.JsonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.List;
 
-public class FornecedorController implements HttpHandler {
-    private final FornecedorService service = new FornecedorService();
+@RestController
+@RequestMapping("/fornecedores")
+public class FornecedorController {
 
-    @Override
-    public void handle(HttpExchange ex) throws IOException {
-        String metodo = ex.getRequestMethod();
-        if ("POST".equalsIgnoreCase(metodo)) {
-            Scanner sc = new Scanner(ex.getRequestBody()).useDelimiter("\\A");
-            String body = sc.hasNext() ? sc.next() : "";
-              sc.close();          
-            try {
-                FornecedorDTO dto = JsonUtil.converterParaDTO(body);
-                Fornecedor fornecedor = service.cadastrarFornecedor(dto.cnpj);
-                JsonUtil.responderJson(ex, 201, JsonUtil.converterParaJson(fornecedor));
-            } catch (Exception e) {
-                JsonUtil.responderJson(ex, 400, "{\"erro\":\"" + e.getMessage() + "\"}");
-            }
+    @Autowired
+    private FornecedorService service;
 
-        } else if ("GET".equalsIgnoreCase(metodo)) {
-            String json = JsonUtil.converterListaParaJson(service.listarTodos());
-            JsonUtil.responderJson(ex, 200, json);
-
-        } else {
-            JsonUtil.responderJson(ex, 405, "{\"erro\":\"Método não permitido\"}");
+    @PostMapping
+    public ResponseEntity<?> cadastrar(@RequestBody FornecedorDTO dto) {
+        try {
+            Fornecedor fornecedor = service.cadastrarFornecedor(dto.getCnpj());
+            return ResponseEntity.status(201).body(fornecedor);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("{\"erro\":\"" + e.getMessage() + "\"}");
         }
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Fornecedor>> listar() {
+        List<Fornecedor> lista = (List<Fornecedor>) service.listarTodos();
+        return ResponseEntity.ok(lista);
     }
 }
