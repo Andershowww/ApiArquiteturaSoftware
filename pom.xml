@@ -29,6 +29,12 @@
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>mssql-jdbc</artifactId>
+      <scope>runtime</scope> <!-- ou mais recente e compatível com sua JDK -->
+    </dependency>
+    
     <!-- Spring Boot Starter Data JPA -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
