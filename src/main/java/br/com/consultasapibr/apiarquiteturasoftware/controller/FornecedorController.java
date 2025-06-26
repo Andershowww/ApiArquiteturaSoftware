@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/fornecedores")
 public class FornecedorController {
@@ -26,9 +24,9 @@ public class FornecedorController {
         }
     }
 
-    @GetMapping
-    public ResponseEntity<List<Fornecedor>> listar() {
-        List<Fornecedor> lista = (List<Fornecedor>) service.listarTodos();
-        return ResponseEntity.ok(lista);
-    }
+    // @GetMapping
+    // public ResponseEntity<List<Fornecedor>> listar() {
+    //     List<Fornecedor> lista = (List<Fornecedor>) service.listarTodos();
+    //     return ResponseEntity.ok(lista);
+    // }
 }

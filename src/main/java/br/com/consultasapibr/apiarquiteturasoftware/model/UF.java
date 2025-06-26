@@ -1,20 +1,23 @@
 package br.com.consultasapibr.apiarquiteturasoftware.model;
+
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "UF")
 public class UF {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_uf")
     private Integer id;
 
-    @Column(name = "sigla")
-    private String sigla;
+    @Column(name = "UF")
+    private String uf;
 
-    // Getters e setters
+    // Getters e Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
-    public String getSigla() { return sigla; }
-    public void setSigla(String sigla) { this.sigla = sigla; }
+    public String getUF() { return uf; }
+    public void setUF(String UF) { this.uf = UF;}
 }

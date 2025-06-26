@@ -1,26 +1,35 @@
 package br.com.consultasapibr.apiarquiteturasoftware.service;
 
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
 import br.com.consultasapibr.apiarquiteturasoftware.repository.FornecedorRepository;
-// import org.springframework.beans.factory.annotation.Autowired;
+import br.com.consultasapibr.apiarquiteturasoftware.repository.UFRepository;
+
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.List;
+
 
 @Service
 public class FornecedorService {
 
-    private final FornecedorRepository repo;
+    private final FornecedorRepository fornecedorRepository;
+    private final UFRepository ufRepository;
     private final HttpClient client;
+    private final ObjectMapper objectMapper;
 
-    public FornecedorService(FornecedorRepository repo) {
-        this.repo = repo;
+    public FornecedorService(FornecedorRepository fornecedorRepository, UFRepository ufRepository) {
+        this.fornecedorRepository = fornecedorRepository;
+        this.ufRepository = ufRepository;
         this.client = HttpClient.newHttpClient();
+        this.objectMapper = new ObjectMapper();
     }
 
     public Fornecedor cadastrarFornecedor(String cnpj) throws Exception {
@@ -29,41 +38,35 @@ public class FornecedorService {
         }
 
         String url = "https://brasilapi.com.br/api/cnpj/v1/" + cnpj;
+        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
 
-        HttpRequest req = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .build();
-
-        HttpResponse<String> res = client.send(req, HttpResponse.BodyHandlers.ofString());
-        String json = res.body();
-
-        if (json.contains("\"message\"")) {
+        if (response.statusCode() != 200 || response.body().contains("\"message\"")) {
             throw new IllegalArgumentException("CNPJ não encontrado");
         }
 
-        // Parse simplificado (sem Gson)
-        String razao = extrair(json, "razao_social");
-        String fantasia = extrair(json, "nome_fantasia");
-        String logradouro = extrair(json, "logradouro");
-        String municipio = extrair(json, "municipio");
-        String uf = extrair(json, "uf");
+        JsonNode root = objectMapper.readTree(response.body());
+        UF entidadeUf = ufRepository.findByUf(root.path("uf").asText())
+                .orElseThrow(() -> new IllegalArgumentException("UF não encontrada"));
 
-        Fornecedor f = new Fornecedor(cnpj, razao, fantasia, logradouro, municipio, uf);
-        repo.salvar(f); // ou repo.save(f) se for Spring Data JPA
-        return f;
+        Fornecedor fornecedor = new Fornecedor(
+                cnpj,
+                root.path("razao_social").asText(),
+                root.path("nome_fantasia").asText(),
+                root.path("logradouro").asText(),
+                root.path("municipio").asText(),
+                entidadeUf
+        );
+
+        return fornecedorRepository.save(fornecedor); // 🔹 salvando no banco
     }
 
-    public Iterable<Fornecedor> listarTodos() {
-        return repo.listarTodos(); // ou repo.findAll() se for Spring Data
-    }
-
-    private String extrair(String json, String campo) {
-        Pattern p = Pattern.compile("\"" + campo + "\"\\s*:\\s*\"([^\"]*)\"");
-        Matcher m = p.matcher(json);
-        return m.find() ? m.group(1) : "";
+    public List<Fornecedor> listarTodos() {
+        return fornecedorRepository.findAll(); // 🔹 buscando do banco
     }
 
     private boolean validarCNPJ(String cnpj) {
         return cnpj != null && cnpj.matches("\\d{14}");
     }
 }
+
