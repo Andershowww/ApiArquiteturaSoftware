@@ -98,7 +98,14 @@ ApiArquiteturaSoftware/
     mvn clean install
     ```
 
-3. Execute a aplicação:
+3. Banco de dados: 
+    Se usar banco de dados, configurar a conexao no arquivo application.properties na pasta resources.
+    Se não for utilizar banco de dados, adicione a seguinte anotação na classe ApiArquiteturaSoftwareApplication.java (classe principal), substituindo a anotação existente:
+    @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
+    adicione o import : import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+    Isso impede que o Spring Boot tente configurar uma conexão com o banco de dados ao iniciar a aplicação.
+    
+4. Execute a aplicação:
     ```bash
     mvn spring-boot:run
     ```
