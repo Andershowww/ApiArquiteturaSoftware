@@ -24,7 +24,7 @@ public class FornecedorController {
 
     @GetMapping("/consulta-cnpj")
     public ResponseEntity<FornecedorConsultaApiDTO> buscaCepApiBrasil(@RequestParam String cnpj) {
-        FornecedorConsultaApiDTO fornecedor = service.buscaCep(cnpj);
+        FornecedorConsultaApiDTO fornecedor = service.buscaCnpj(cnpj);
         return ResponseEntity.ok(fornecedor);
     }
 }

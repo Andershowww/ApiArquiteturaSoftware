@@ -62,7 +62,7 @@ public class FornecedorService {
         }
     }
 
-    public FornecedorConsultaApiDTO buscaCep(String cnpj) {
+    public FornecedorConsultaApiDTO buscaCnpj(String cnpj) {
 
         if (!validarCNPJ(cnpj)) {
             throw new BadRequestException("CNPJ inválido");
