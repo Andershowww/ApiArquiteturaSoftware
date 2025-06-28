@@ -1,17 +1,8 @@
 package br.com.consultasapibr.apiarquiteturasoftware.repository;
 
-import java.util.ArrayList;
-import java.util.List;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public class FornecedorRepository {
-    private final List<Fornecedor> lista = new ArrayList<>();
-
-    public void salvar(Fornecedor f) {
-        lista.add(f);
-    }
-
-    public List<Fornecedor> listarTodos() {
-        return lista;
-    }
+public interface FornecedorRepository extends JpaRepository<Fornecedor, Integer> {
+    boolean existsByCnpj(String cnpj);
 }

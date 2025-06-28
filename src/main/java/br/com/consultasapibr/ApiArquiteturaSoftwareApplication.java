@@ -1,17 +1,17 @@
-package br.com.consultasapibr.apiarquiteturasoftware;
+package br.com.consultasapibr;
 
-import com.sun.net.httpserver.HttpServer;
-import br.com.consultasapibr.apiarquiteturasoftware.controller.FornecedorController;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.net.InetSocketAddress;
-
+@SpringBootApplication
 public class ApiArquiteturaSoftwareApplication {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
-        server.createContext("/fornecedores", new FornecedorController());
-        server.setExecutor(null);
-        server.start();
-        System.out.println("Servidor iniciado em http://localhost:8080/fornecedores");
+    private static final Logger logger = LoggerFactory.getLogger(ApiArquiteturaSoftwareApplication.class);
+
+    public static void main(String[] args) {
+        SpringApplication.run(ApiArquiteturaSoftwareApplication.class, args);
+        logger.info("Servidor Spring Boot iniciado com sucesso!");
+        logger.info("Acesse: http://localhost:8080/fornecedores");
     }
 }

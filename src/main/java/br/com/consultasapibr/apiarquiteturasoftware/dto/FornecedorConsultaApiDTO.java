@@ -1,42 +1,15 @@
-package br.com.consultasapibr.apiarquiteturasoftware.model;
+package br.com.consultasapibr.apiarquiteturasoftware.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(name = "Fornecedor")
-public class Fornecedor {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_fornecedor")
-    private Integer id;
-
-    @Column(name = "cnpj", nullable = false, unique = true)
+public class FornecedorConsultaApiDTO {
     private String cnpj;
-
-    @Column(name = "razao_social", nullable = false)
     private String razaoSocial;
-
-    @Column(name = "nome_Fantasia", nullable = false)
     private String nomeFantasia;
-
-    @Column(name = "logradouro", nullable = false)
     private String logradouro;
-
-    @Column(name = "municipio", nullable = false)
     private String municipio;
+    private String uf;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_uf", nullable = false)
-    private UF uf;
-
-    // 🔹 Construtor padrão (obrigatório para o JPA)
-    public Fornecedor() {
-    }
-
-    // 🔹 Construtor com todos os atributos (exceto o ID)
-    public Fornecedor(String cnpj, String razaoSocial, String nomeFantasia,
-                      String logradouro, String municipio, UF uf) {
+    public FornecedorConsultaApiDTO(String cnpj, String razaoSocial, String nomeFantasia,
+                      String logradouro, String municipio, String uf) {
         this.cnpj = cnpj;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
@@ -45,14 +18,6 @@ public class Fornecedor {
         this.uf = uf;
     }
 
-    // 🔹 Getters e Setters
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getCnpj() {
         return cnpj;
@@ -94,11 +59,11 @@ public class Fornecedor {
         this.municipio = municipio;
     }
 
-    public UF getUf() {
+    public String getUF() {
         return uf;
     }
 
-    public void setUf(UF uf) {
+    public void setUF(String uf) {
         this.uf = uf;
     }
 }

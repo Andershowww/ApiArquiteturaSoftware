@@ -28,6 +28,13 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
+    
+    <dependency>
+      <groupId>com.microsoft.sqlserver</groupId>
+      <artifactId>mssql-jdbc</artifactId>
+      <version>12.6.0.jre8</version> <!-- essa versão funciona para JDK 8+ incluindo Java 17 -->
+      <scope>runtime</scope>
+  </dependency>
 
     <!-- Spring Boot Starter Data JPA -->
     <dependency>
