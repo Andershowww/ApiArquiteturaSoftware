@@ -111,7 +111,7 @@ ApiArquiteturaSoftware/
     ```
    Ou execute a classe `ApiArquiteturaSoftwareApplication` pelo seu IDE.
 
-4. Acesse a API:
+5. Acesse a API:
     - Endpoints disponíveis em: `http://localhost:8080`
     - Endpoint legado: `http://localhost:8080/fornecedores`
 
@@ -119,9 +119,9 @@ ApiArquiteturaSoftware/
 
 ## Exemplos de Uso
 
-- **Consultar fornecedores:**
+- **Consultar cnpj:**
     ```
-    GET http://localhost:8080/fornecedores
+    GET http://localhost:8080/fornecedores/consulta-cnpj
     ```
 
 - **Cadastrar fornecedor:**
