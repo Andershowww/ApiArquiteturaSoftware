@@ -12,12 +12,12 @@ public class UF {
     private Integer id;
 
     @Column(name = "UF")
-    private String uf;
+    private String ufSigla;
 
     // Getters e Setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
-    public String getUF() { return uf; }
-    public void setUF(String UF) { this.uf = UF;}
+    public String getUF() { return ufSigla; }
+    public void setUF(String uf) { this.ufSigla = uf;}
 }
