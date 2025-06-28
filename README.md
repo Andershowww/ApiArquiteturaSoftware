@@ -99,8 +99,18 @@ ApiArquiteturaSoftware/
     ```
 
 3. Banco de dados: 
-    Se usar banco de dados, configurar a conexao no arquivo application.properties na pasta resources.
-    Se não for utilizar banco de dados, adicione a seguinte anotação na classe ApiArquiteturaSoftwareApplication.java (classe principal), substituindo a anotação existente:
+    Se usar banco de dados, configurar a conexao no arquivo src/main/resources/application.properties.
+    exemplo de uso: 
+    spring.datasource.url=jdbc:sqlserver:SeuServidor;databaseName=SuaBaseDeDados;encrypt=true;trustServerCertificate=true;
+    spring.datasource.username=SeuUsuario
+    spring.datasource.password=SuaSenha
+    spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+    spring.jpa.hibernate.ddl-auto=update
+    spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.SQLServerDialect
+    spring.jpa.show-sql=true
+
+    Se não for utilizar banco de dados, adicione a seguinte anotação na classe src/main/java/br/com/consultasapibr/ApiArquiteturaSoftwareApplication.java (classe principal), substituindo a anotação existente:
     @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
     adicione o import : import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
     Isso impede que o Spring Boot tente configurar uma conexão com o banco de dados ao iniciar a aplicação.
