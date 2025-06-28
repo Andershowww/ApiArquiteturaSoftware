@@ -1,7 +1,10 @@
 package util;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.HttpExchange;
+
 import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.exception.ExternalApiException;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 
 import java.io.IOException;
@@ -14,19 +17,12 @@ public class JsonUtil {
     }
 
     public static FornecedorDTO converterParaDTO(String json) {
-        FornecedorDTO dto = new FornecedorDTO();
-        // Remover espaços, tabulações, quebras de linha e ajustar o texto
-        json = json.replaceAll("\\s+", "");
-
-        // Expressão robusta para capturar o CNPJ
-        if (json.matches(".*\"cnpj\":\"\\d{14}\".*")) {
-            dto.setCnpj(json.replaceAll(".*\"cnpj\":\"(\\d{14})\".*", "$1"));
-
-        } else {
-            dto.setCnpj(null);
+        try {
+            ObjectMapper mapper = new ObjectMapper();
+            return mapper.readValue(json, FornecedorDTO.class);
+        } catch (IOException e) {
+            throw new ExternalApiException("Erro ao converter JSON para DTO", e);
         }
-
-        return dto;
     }
 
     public static String converterParaJson(Fornecedor f) {

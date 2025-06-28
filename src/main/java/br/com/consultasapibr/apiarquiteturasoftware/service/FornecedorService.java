@@ -4,7 +4,9 @@ import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
 import br.com.consultasapibr.apiarquiteturasoftware.repository.FornecedorRepository;
 import br.com.consultasapibr.apiarquiteturasoftware.repository.UFRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorConsultaApiDTO;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -35,7 +37,33 @@ public class FornecedorService {
         this.objectMapper = new ObjectMapper();
     }
 
-    public Fornecedor cadastrarFornecedor(String cnpj) {
+    public Fornecedor cadastrarFornecedor(FornecedorConsultaApiDTO dto) {
+        if (!validarCNPJ(dto.getCnpj())) {
+            throw new BadRequestException("CNPJ inválido");
+        }
+
+        UF entidadeUf = ufRepository.findByufSigla(dto.getUF())
+                .orElseThrow(() -> new ResourceNotFoundException("UF não encontrada"));
+
+        Fornecedor fornecedor = new Fornecedor(
+                dto.getCnpj(),
+                dto.getRazaoSocial(),
+                dto.getNomeFantasia(),
+                dto.getLogradouro(),
+                dto.getMunicipio(),
+                entidadeUf);
+        try {
+            return fornecedorRepository.save(fornecedor);
+        } catch (DataIntegrityViolationException e) {
+            // Erro típico: cnpj já cadastrado (duplicado)
+            throw new BadRequestException("Fornecedor com este CNPJ já existe.");
+        } catch (Exception e) {
+            throw new ExternalApiException("Erro ao salvar fornecedor no banco de dados", e);
+        }
+    }
+
+    public FornecedorConsultaApiDTO buscaCep(String cnpj) {
+
         if (!validarCNPJ(cnpj)) {
             throw new BadRequestException("CNPJ inválido");
         }
@@ -48,23 +76,18 @@ public class FornecedorService {
             if (response.statusCode() != 200 || response.body().contains("\"message\"")) {
                 throw new BadRequestException("CNPJ não encontrado");
             }
-
             JsonNode root = objectMapper.readTree(response.body());
-            UF entidadeUf = ufRepository.findByufSigla(root.path("uf").asText())
-                    .orElseThrow(() -> new ResourceNotFoundException("UF não encontrada"));
 
-            Fornecedor fornecedor = new Fornecedor(
+            return new FornecedorConsultaApiDTO(
                     cnpj,
                     root.path("razao_social").asText(),
                     root.path("nome_fantasia").asText(),
                     root.path("logradouro").asText(),
                     root.path("municipio").asText(),
-                    entidadeUf);
-
-            return fornecedorRepository.save(fornecedor);
+                    root.path("uf").asText());
 
         } catch (IOException | InterruptedException e) {
-            Thread.currentThread().interrupt(); // boa prática para InterruptedException
+            Thread.currentThread().interrupt();
             throw new ExternalApiException("Erro ao consultar CNPJ na API externa", e);
         }
     }
