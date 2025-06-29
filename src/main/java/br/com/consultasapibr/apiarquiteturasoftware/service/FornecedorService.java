@@ -2,8 +2,8 @@ package br.com.consultasapibr.apiarquiteturasoftware.service;
 
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
-import br.com.consultasapibr.apiarquiteturasoftware.repository.FornecedorRepository;
-import br.com.consultasapibr.apiarquiteturasoftware.repository.UFRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.repository.IFornecedorRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.repository.IUFRepository;
 import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorConsultaApiDTO;
 
 import org.springframework.dao.DataIntegrityViolationException;
@@ -25,12 +25,12 @@ import br.com.consultasapibr.apiarquiteturasoftware.exception.ExternalApiExcepti
 @Service
 public class FornecedorService {
 
-    private final FornecedorRepository fornecedorRepository;
-    private final UFRepository ufRepository;
+    private final IFornecedorRepository fornecedorRepository;
+    private final IUFRepository ufRepository;
     private final HttpClient client;
     private final ObjectMapper objectMapper;
 
-    public FornecedorService(FornecedorRepository fornecedorRepository, UFRepository ufRepository) {
+    public FornecedorService(IFornecedorRepository fornecedorRepository, IUFRepository ufRepository) {
         this.fornecedorRepository = fornecedorRepository;
         this.ufRepository = ufRepository;
         this.client = HttpClient.newHttpClient();
