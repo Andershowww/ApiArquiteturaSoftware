@@ -3,6 +3,9 @@ package br.com.consultasapibr.apiarquiteturasoftware.controller;
 import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorConsultaApiDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 import br.com.consultasapibr.apiarquiteturasoftware.service.FornecedorService;
+
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +26,16 @@ public class FornecedorController {
     }
 
     @GetMapping("/consulta-cnpj")
-    public ResponseEntity<FornecedorConsultaApiDTO> buscaCepApiBrasil(@RequestParam String cnpj) {
+    public ResponseEntity<FornecedorConsultaApiDTO> buscaCnpjApiBrasil(@RequestParam String cnpj) {
         FornecedorConsultaApiDTO fornecedor = service.buscaCnpj(cnpj);
         return ResponseEntity.ok(fornecedor);
+    }
+
+    @GetMapping("/lista-fornecedores")
+    public ResponseEntity<List<FornecedorConsultaApiDTO>>buscaTodosFornecedores() {
+        List<FornecedorConsultaApiDTO> dtos = service.listarTodos().stream()
+        .map(FornecedorConsultaApiDTO::new)
+        .toList();
+    return ResponseEntity.ok(dtos);
     }
 }
