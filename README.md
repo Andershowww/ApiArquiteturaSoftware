@@ -26,7 +26,20 @@ Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https
 
 ## Descrição
 
-Este projeto tem como objetivo fornecer uma API para consulta e cadastro de fornecedores, além de integração com a API do YouTube. Ele segue as boas práticas de design de software, com separação de camadas (Controller, Service, Repository, Model, DTO, Util) e persistência de dados local por meio do banco SQLite.
+Este projeto tem como objetivo fornecer uma API para consulta e cadastro de fornecedores.
+A API para gestão de fornecedores que segue boas práticas de arquitetura em camadas:
+
+Controller: recebe requisições HTTP e responde com dados via API REST
+
+Service: contém a lógica de negócio e integração com APIs externas
+
+Repository: manipula persistência dos dados, atualmente via banco (ex: SQL Server, H2)
+
+Model: define as entidades do domínio da aplicação
+
+DTO: define objetos para entrada e saída de dados JSON
+
+Util: utilitários auxiliares (ex: conversão, respostas padronizadas)
 
 ---
 
@@ -35,7 +48,7 @@ Este projeto tem como objetivo fornecer uma API para consulta e cadastro de forn
 - **Java 17+**
 - **Spring Boot 3+**
 - **Maven**
-- **SQLite** (via JDBC)
+- **SQLSERVER** (via JDBC)
 - **HTTPServer (Sun)** para endpoints legados
 
 ---
@@ -44,26 +57,25 @@ Este projeto tem como objetivo fornecer uma API para consulta e cadastro de forn
 
 ```
 ApiArquiteturaSoftware/
-├── legacy/ # Projeto antigo (referência)
 ├── src/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── br/com/consultasapibr/apiarquiteturasoftware/
-│   │   │       ├── controller/
-│   │   │       ├── dto/
-│   │   │       ├── model/
-│   │   │       ├── repository/
-│   │   │       ├── service/
-│   │   │       ├── util/
-│   │   │       └── ApiArquiteturaSoftwareApplication.java
+│   │   │       ├── controller/       # Endpoints REST
+│   │   │       ├── dto/              # Data Transfer Objects (entrada/saída JSON)
+│   │   │       ├── model/            # Entidades JPA / domínio
+│   │   │       ├── repository/       # Interfaces JPA para acesso a dados
+│   │   │       ├── service/          # Lógica de negócio
+│   │   │       ├── util/             # Classes utilitárias
+│   │   │       └── ApiArquiteturaSoftwareApplication.java  # Classe principal
 │   │   └── resources/
-│   │       ├── application.properties
-│   │       └── application.local.properties
+│   │       ├── application.properties       # Configurações principais
+│   │       ├── application-dev.properties   # Configurações para perfil dev
+│   │       └── application-prod.properties  # Configurações para perfil produção
 │   └── test/
 │       └── java/
-│           └── br/com/consultasapibr/apiarquiteturasoftware/
+│           └── br/com/consultasapibr/apiarquiteturasoftware/  # Testes automatizados
 ├── pom.xml
-├── .gitignore
 └── README.md
 ```
 
@@ -73,8 +85,6 @@ ApiArquiteturaSoftware/
 - **model/**: Entidades do sistema.
 - **dto/**: Objetos de transferência de dados.
 - **util/**: Classes utilitárias.
-- **legacy/**: Estrutura antiga mantida para referências.
-
 ---
 
 ## Como Rodar o Projeto
@@ -98,12 +108,18 @@ ApiArquiteturaSoftware/
     mvn clean install
     ```
 
-3. Banco de dados: 
-    Se usar banco de dados, configurar a conexao no arquivo application.properties na pasta resources.
-    Se não for utilizar banco de dados, adicione a seguinte anotação na classe ApiArquiteturaSoftwareApplication.java (classe principal), substituindo a anotação existente:
-    @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
-    adicione o import : import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-    Isso impede que o Spring Boot tente configurar uma conexão com o banco de dados ao iniciar a aplicação.
+3.Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, perfis de execução, entre outros.
+
+Você encontrará os seguintes arquivos na pasta src/main/resources/:
+
+application.properties
+Arquivo principal de configuração, que serve como base para todos os perfis. Aqui você pode definir configurações comuns que serão usadas em todos os ambientes (dev, prod, etc), use dev para manipular dados em memória e prod para manipular com banco de dados.
+
+application-dev.properties
+Arquivo específico para o perfil de desenvolvimento ("dev"). Geralmente contém configurações para facilitar o desenvolvimento, como banco de dados em memória H2, logs mais detalhados, entre outros.
+
+application-prod.properties
+Arquivo para o perfil de produção ("prod"). Deve conter as configurações reais, como conexão com o banco SQL Server, segurança, níveis de log mais restritos, etc.
     
 4. Execute a aplicação:
     ```bash
@@ -121,9 +137,12 @@ ApiArquiteturaSoftware/
 
 - **Consultar fornecedores:**
     ```
-    GET http://localhost:8080/fornecedores
+    GET http://localhost:8080/fornecedores/lista-fornecedores
     ```
-
+- **Consultar cnpj:**
+    ```
+    GET http://localhost:8080/fornecedores/consulta-cnpj?cnpj=19131243000197
+    ```
 - **Cadastrar fornecedor:**
     ```
     POST http://localhost:8080/fornecedores
@@ -149,7 +168,7 @@ ApiArquiteturaSoftware/
 - **Packages em minúsculo, seguindo domínio invertido**  
   Exemplo: `br.com.consultasapibr.apiarquiteturasoftware.model`
 - **Configurações em `application.properties`**
-- **Código legado mantido em `/legacy` para consulta e refatoração futura**
+
 
 Para mais detalhes, consulte:
 - [Java Code Conventions (Oracle)](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html)
