@@ -1,6 +1,5 @@
 package br.com.consultasapibr;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,7 +29,6 @@ class FornecedorApiTest {
     void deveCadastrarFornecedorComSucesso() throws Exception {
         String novoFornecedor = """
                 {
-                   
                     "cnpj": "19131243000197",
                     "razaoSocial": "OPEN KNOWLEDGE BRASIL",
                     "nomeFantasia": "REDE PELO CONHECIMENTO LIVRE",
