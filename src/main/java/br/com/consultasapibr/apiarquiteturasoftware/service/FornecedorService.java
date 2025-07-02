@@ -99,4 +99,5 @@ public class FornecedorService {
     private boolean validarCNPJ(String cnpj) {
         return cnpj != null && cnpj.matches("\\d{14}");
     }
+
 }
