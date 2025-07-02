@@ -71,7 +71,7 @@ ApiArquiteturaSoftware/
 │   │   └── resources/
 │   │       ├── application.properties       # Configurações principais
 │   │       ├── application-dev.properties   # Configurações para perfil dev
-│   │       └── application-prod.properties  # Configurações para perfil produção
+│   │       └── application-prod-exemplo.properties  # Configurações para perfil produção exemplo
 │   └── test/
 │       └── java/
 │           └── br/com/consultasapibr/apiarquiteturasoftware/  # Testes automatizados
@@ -119,7 +119,7 @@ application-dev.properties
 Arquivo específico para o perfil de desenvolvimento ("dev"). Geralmente contém configurações para facilitar o desenvolvimento, como banco de dados em memória H2, logs mais detalhados, entre outros.
 
 application-prod.properties
-Arquivo para o perfil de produção ("prod"). Deve conter as configurações reais, como conexão com o banco SQL Server, segurança, níveis de log mais restritos, etc.
+Arquivo para o perfil de produção ("prod"). Deve conter as configurações reais, como conexão com o banco SQL Server, segurança, níveis de log mais restritos, etc, você deve criar esse arquivo, pode copiar do arquivo application-prod-exemplo.properties.
     
 4. Execute a aplicação:
     ```bash
@@ -127,7 +127,7 @@ Arquivo para o perfil de produção ("prod"). Deve conter as configurações rea
     ```
    Ou execute a classe `ApiArquiteturaSoftwareApplication` pelo seu IDE.
 
-4. Acesse a API:
+5. Acesse a API:
     - Endpoints disponíveis em: `http://localhost:8080`
     - Endpoint legado: `http://localhost:8080/fornecedores`
 
