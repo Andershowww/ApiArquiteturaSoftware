@@ -15,14 +15,17 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @Profile("dev")
 public class FornecedorRepositoryMock implements IFornecedorRepository {
 
-    // Thread-safe list para evitar problemas em ambiente concorrente
     private final List<Fornecedor> fornecedores = new CopyOnWriteArrayList<>();
+    private int currentId = 1;
 
     @Override
     public Fornecedor save(Fornecedor fornecedor) {
         if (existsByCnpj(fornecedor.getCnpj())) {
-            // Atualiza registro existente
-            fornecedores.removeIf(f -> f.getCnpj().equals(fornecedor.getCnpj()));
+            if (fornecedor.getId() == null) {
+                fornecedor.setId(currentId++);
+            } else {
+                fornecedores.removeIf(f -> f.getCnpj().equals(fornecedor.getCnpj()));
+            }
         }
         fornecedores.add(fornecedor);
         return fornecedor;
