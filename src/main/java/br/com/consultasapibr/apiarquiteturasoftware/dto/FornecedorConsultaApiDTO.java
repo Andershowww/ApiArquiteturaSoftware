@@ -3,6 +3,7 @@ package br.com.consultasapibr.apiarquiteturasoftware.dto;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 
 public class FornecedorConsultaApiDTO {
+    private int id;
     private String cnpj;
     private String razaoSocial;
     private String nomeFantasia;
@@ -21,12 +22,21 @@ public class FornecedorConsultaApiDTO {
     }
 
     public FornecedorConsultaApiDTO(Fornecedor fornecedor) {
+        this.id= fornecedor.getId();
         this.cnpj = fornecedor.getCnpj();
         this.razaoSocial = fornecedor.getRazaoSocial();
         this.nomeFantasia = fornecedor.getNomeFantasia();
         this.logradouro = fornecedor.getLogradouro();
         this.municipio = fornecedor.getMunicipio();
         this.uf = fornecedor.getUf() != null ? fornecedor.getUf().getUF() : null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCnpj() {

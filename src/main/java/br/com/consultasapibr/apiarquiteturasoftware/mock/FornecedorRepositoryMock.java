@@ -21,12 +21,13 @@ public class FornecedorRepositoryMock implements IFornecedorRepository {
     @Override
     public Fornecedor save(Fornecedor fornecedor) {
         if (existsByCnpj(fornecedor.getCnpj())) {
-            if (fornecedor.getId() == null) {
-                fornecedor.setId(currentId++);
-            } else {
-                fornecedores.removeIf(f -> f.getCnpj().equals(fornecedor.getCnpj()));
-            }
+
+            fornecedores.removeIf(f -> f.getCnpj().equals(fornecedor.getCnpj()));
         }
+        if (fornecedor.getId() == null) {
+            fornecedor.setId(currentId++);
+        }
+
         fornecedores.add(fornecedor);
         return fornecedor;
     }
