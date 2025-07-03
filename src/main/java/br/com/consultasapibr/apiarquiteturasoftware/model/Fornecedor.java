@@ -20,29 +20,18 @@ public class Fornecedor {
     @Column(name = "nome_Fantasia", nullable = false)
     private String nomeFantasia;
 
-    @Column(name = "logradouro", nullable = false)
-    private String logradouro;
-
-    @Column(name = "municipio", nullable = false)
-    private String municipio;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_uf", nullable = false)
-    private UF uf;
+    @Column(name = "cnae", nullable = false)
+    private String cnae;
 
     // 🔹 Construtor padrão (obrigatório para o JPA)
     public Fornecedor() {
     }
 
-    // 🔹 Construtor com todos os atributos (exceto o ID)
-    public Fornecedor(String cnpj, String razaoSocial, String nomeFantasia,
-                      String logradouro, String municipio, UF uf) {
+    public Fornecedor(String cnpj, String razaoSocial, String nomeFantasia, String cnae) {
         this.cnpj = cnpj;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
-        this.logradouro = logradouro;
-        this.municipio = municipio;
-        this.uf = uf;
+        this.cnae = cnae;
     }
 
     // 🔹 Getters e Setters
@@ -78,27 +67,11 @@ public class Fornecedor {
         this.nomeFantasia = nomeFantasia;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getCnae() {
+        return cnae;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
-    }
-
-    public String getMunicipio() {
-        return municipio;
-    }
-
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
-    }
-
-    public UF getUf() {
-        return uf;
-    }
-
-    public void setUf(UF uf) {
-        this.uf = uf;
+    public void setCnae(String cnae) {
+        this.cnae = cnae;
     }
 }

@@ -1,34 +1,35 @@
 package br.com.consultasapibr.apiarquiteturasoftware.dto;
 
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.EnderecoFornecedor;
 
 public class FornecedorConsultaApiDTO {
     private int id;
     private String cnpj;
     private String razaoSocial;
     private String nomeFantasia;
-    private String logradouro;
-    private String municipio;
-    private String uf;
-
-    public FornecedorConsultaApiDTO(String cnpj, String razaoSocial, String nomeFantasia,
-                      String logradouro, String municipio, String uf) {
+    private String cnae;
+    private EnderecoFornecedorDTO endereco;
+    public FornecedorConsultaApiDTO() {
+        // construtor padrão vazio
+    }
+    public FornecedorConsultaApiDTO(String cnpj, String razaoSocial, String nomeFantasia, String cnae, EnderecoFornecedorDTO endereco) {
         this.cnpj = cnpj;
         this.razaoSocial = razaoSocial;
         this.nomeFantasia = nomeFantasia;
-        this.logradouro = logradouro;
-        this.municipio = municipio;
-        this.uf = uf;
+        this.endereco = endereco;
+        this.cnae=cnae;
     }
 
-    public FornecedorConsultaApiDTO(Fornecedor fornecedor) {
-        this.id= fornecedor.getId();
+    public FornecedorConsultaApiDTO(Fornecedor fornecedor, EnderecoFornecedor enderecoEntity) {
+        this.id = fornecedor.getId();
         this.cnpj = fornecedor.getCnpj();
         this.razaoSocial = fornecedor.getRazaoSocial();
         this.nomeFantasia = fornecedor.getNomeFantasia();
-        this.logradouro = fornecedor.getLogradouro();
-        this.municipio = fornecedor.getMunicipio();
-        this.uf = fornecedor.getUf() != null ? fornecedor.getUf().getUF() : null;
+        this.cnae= fornecedor.getCnae();
+        if (enderecoEntity != null) {
+            this.endereco = new EnderecoFornecedorDTO(enderecoEntity);
+        }
     }
 
     public int getId() {
@@ -63,27 +64,20 @@ public class FornecedorConsultaApiDTO {
         this.nomeFantasia = nomeFantasia;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public String getCnae() {
+        return cnae;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setCnae(String cnae) {
+        this.cnae = cnae;
     }
 
-    public String getMunicipio() {
-        return municipio;
+    public EnderecoFornecedorDTO getEndereco() {
+        return endereco;
     }
 
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
+    public void setEndereco(EnderecoFornecedorDTO endereco) {
+        this.endereco = endereco;
     }
-
-    public String getUF() {
-        return uf;
-    }
-
-    public void setUF(String uf) {
-        this.uf = uf;
-    }
+    
 }

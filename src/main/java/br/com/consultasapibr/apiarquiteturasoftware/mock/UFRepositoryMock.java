@@ -41,7 +41,6 @@ public class UFRepositoryMock implements IUFRepository {
         ufMap.put("SP", new UF(25, "SP"));
         ufMap.put("SE", new UF(26, "SE"));
         ufMap.put("TO", new UF(27, "TO"));
-
     }
 
     @Override
