@@ -15,12 +15,16 @@ Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https
 
 ## Índice
 
-- [Descrição](#descrição)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Como Rodar o Projeto](#como-rodar-o-projeto)
-- [Exemplos de Uso](#exemplos-de-uso)
-- [Padrões de Código e Organização](#padrões-de-código-e-organização)
+- [ApiArquiteturaSoftware](#apiarquiteturasoftware)
+  - [Índice](#índice)
+  - [Descrição](#descrição)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+  - [Estrutura do Projeto](#estrutura-do-projeto)
+  - [Como Rodar o Projeto](#como-rodar-o-projeto)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Passos](#passos)
+  - [Exemplos de Uso](#exemplos-de-uso)
+  - [Padrões de Código e Organização](#padrões-de-código-e-organização)
 
 ---
 
@@ -108,18 +112,14 @@ ApiArquiteturaSoftware/
     mvn clean install
     ```
 
-3.Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, perfis de execução, entre outros.
-
-Você encontrará os seguintes arquivos na pasta src/main/resources/:
-
-application.properties
-Arquivo principal de configuração, que serve como base para todos os perfis. Aqui você pode definir configurações comuns que serão usadas em todos os ambientes (dev, prod, etc), use dev para manipular dados em memória e prod para manipular com banco de dados.
-
-application-dev.properties
-Arquivo específico para o perfil de desenvolvimento ("dev"). Geralmente contém configurações para facilitar o desenvolvimento, como banco de dados em memória H2, logs mais detalhados, entre outros.
-
-application-prod.properties
-Arquivo para o perfil de produção ("prod"). Deve conter as configurações reais, como conexão com o banco SQL Server, segurança, níveis de log mais restritos, etc, você deve criar esse arquivo, pode copiar do arquivo application-prod-exemplo.properties.
+3. Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, perfis de execução, entre outros.
+   Você encontrará os seguintes arquivos na pasta src/main/resources/:
+   application.properties
+   Arquivo principal de configuração, que serve como base para todos os perfis. Aqui você pode definir configurações comuns que serão usadas em todos os ambientes (dev, prod, etc), use dev para manipular dados em memória e prod para manipular com banco de dados.
+   application-dev.properties
+   Arquivo específico para o perfil de desenvolvimento ("dev"). Geralmente contém configurações para facilitar o desenvolvimento, como banco de dados em memória H2, logs mais detalhados, entre outros.
+   application-prod.properties
+   Arquivo para o perfil de produção ("prod"). Deve conter as configurações reais, como conexão com o banco SQL Server, segurança, níveis de log mais restritos, etc, você deve criar esse arquivo, pode copiar do arquivo application-prod-exemplo.properties.
     
 4. Execute a aplicação:
     ```bash
