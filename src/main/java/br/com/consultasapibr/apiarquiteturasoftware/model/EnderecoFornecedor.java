@@ -1,5 +1,6 @@
 package br.com.consultasapibr.apiarquiteturasoftware.model;
 
+import br.com.consultasapibr.apiarquiteturasoftware.dto.EnderecoFornecedorDTO;
 import jakarta.persistence.*;
 
 @Entity
@@ -38,18 +39,18 @@ public class EnderecoFornecedor {
     private String cep;
 
     // 🔹 Construtor padrão (necessário para o JPA)
-    public EnderecoFornecedor() {}
+    public EnderecoFornecedor() {
+    }
 
-    public EnderecoFornecedor(Fornecedor fornecedor, UF uf, String logradouro, String numero,
-                              String bairro, String municipio, String complemento, String cep) {
+    public EnderecoFornecedor(Fornecedor fornecedor, UF uf, EnderecoFornecedorDTO dto) {
         this.fornecedor = fornecedor;
         this.uf = uf;
-        this.logradouro = logradouro;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.municipio = municipio;
-        this.complemento = complemento;
-        this.cep= cep;
+        this.logradouro = dto.getLogradouro();
+        this.numero = dto.getNumero();
+        this.bairro = dto.getBairro();
+        this.municipio = dto.getMunicipio();
+        this.complemento = dto.getComplemento();
+        this.cep = dto.getCep();
     }
 
     public Integer getId() {
@@ -123,6 +124,5 @@ public class EnderecoFornecedor {
     public void setCep(String cep) {
         this.cep = cep;
     }
-    
-}
 
+}

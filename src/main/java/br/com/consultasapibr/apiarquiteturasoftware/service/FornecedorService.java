@@ -69,15 +69,9 @@ public class FornecedorService {
             EnderecoFornecedor endereco = new EnderecoFornecedor(
                     fornecedor,
                     entidadeUf,
-                    dto.getEndereco().getLogradouro() != null ? dto.getEndereco().getLogradouro() : "",
-                    dto.getEndereco().getNumero() != null ? dto.getEndereco().getNumero() : "",
-                    dto.getEndereco().getBairro() != null ? dto.getEndereco().getBairro() : "",
-                    dto.getEndereco().getMunicipio() != null ? dto.getEndereco().getMunicipio() : "",
-                    dto.getEndereco().getComplemento() != null ? dto.getEndereco().getComplemento() : "",
-                    dto.getEndereco().getCep() != null ? dto.getEndereco().getCep() : ""
-                    );
+                    dto.getEndereco());
             enderecoRepository.save(endereco);
-            System.out.println("CEP recebido: " + dto.getEndereco().getCep());
+           
             return fornecedor;
         } catch (DataIntegrityViolationException e) {
             throw new BadRequestException("Fornecedor com este CNPJ já existe.");
