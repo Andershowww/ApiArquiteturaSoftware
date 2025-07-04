@@ -33,9 +33,7 @@ public class FornecedorController {
 
     @GetMapping("/lista-fornecedores")
     public ResponseEntity<List<FornecedorConsultaApiDTO>>buscaTodosFornecedores() {
-        List<FornecedorConsultaApiDTO> dtos = service.listarTodos().stream()
-        .map(FornecedorConsultaApiDTO::new)
-        .toList();
-    return ResponseEntity.ok(dtos);
+        List<FornecedorConsultaApiDTO> dtos = service.listarTodos();
+        return ResponseEntity.ok(dtos);
     }
 }
