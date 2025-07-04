@@ -9,8 +9,10 @@ public class EnderecoFornecedorDTO {
     private String bairro;
     private String municipio;
     private String uf;
+    private String cep;
 
-    public EnderecoFornecedorDTO() {}
+    public EnderecoFornecedorDTO() {
+    }
 
     public EnderecoFornecedorDTO(EnderecoFornecedor endereco) {
         this.logradouro = endereco.getLogradouro();
@@ -19,6 +21,7 @@ public class EnderecoFornecedorDTO {
         this.bairro = endereco.getBairro();
         this.municipio = endereco.getMunicipio();
         this.uf = endereco.getUf() != null ? endereco.getUf().getUF() : null;
+        this.cep = endereco.getCep();
     }
 
     // Getters e Setters
@@ -68,5 +71,13 @@ public class EnderecoFornecedorDTO {
 
     public void setUf(String uf) {
         this.uf = uf;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
     }
 }

@@ -1,6 +1,5 @@
 package br.com.consultasapibr.apiarquiteturasoftware.model;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -35,12 +34,14 @@ public class EnderecoFornecedor {
     @Column(name = "complemento", nullable = false, length = 50)
     private String complemento;
 
+    @Column(name = "cep", nullable = false, length = 9)
+    private String cep;
+
     // 🔹 Construtor padrão (necessário para o JPA)
     public EnderecoFornecedor() {}
 
-    // 🔹 Construtor completo (exceto id)
     public EnderecoFornecedor(Fornecedor fornecedor, UF uf, String logradouro, String numero,
-                              String bairro, String municipio, String complemento) {
+                              String bairro, String municipio, String complemento, String cep) {
         this.fornecedor = fornecedor;
         this.uf = uf;
         this.logradouro = logradouro;
@@ -48,9 +49,9 @@ public class EnderecoFornecedor {
         this.bairro = bairro;
         this.municipio = municipio;
         this.complemento = complemento;
+        this.cep= cep;
     }
 
-    // 🔹 Getters e Setters
     public Integer getId() {
         return id;
     }
@@ -114,5 +115,14 @@ public class EnderecoFornecedor {
     public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+    
 }
 

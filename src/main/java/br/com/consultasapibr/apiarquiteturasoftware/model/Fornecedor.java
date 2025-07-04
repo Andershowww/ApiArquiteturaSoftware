@@ -17,7 +17,7 @@ public class Fornecedor {
     @Column(name = "razao_social", nullable = false)
     private String razaoSocial;
 
-    @Column(name = "nome_Fantasia", nullable = false)
+    @Column(name = "nome_fantasia", nullable = false)
     private String nomeFantasia;
 
     @Column(name = "cnae", nullable = false)

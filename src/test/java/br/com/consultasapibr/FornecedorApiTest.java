@@ -39,7 +39,8 @@ class FornecedorApiTest {
                     "bairro": "Bela Vista",
                     "municipio": "SAO PAULO",
                     "complemento": "Sala 3",
-                    "uf": "SP"
+                    "uf": "SP",
+                    "cep": "01311902"
                   }
                 }
                                 """;

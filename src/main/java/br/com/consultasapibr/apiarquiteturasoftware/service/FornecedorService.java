@@ -43,8 +43,15 @@ public class FornecedorService {
         this.objectMapper = new ObjectMapper();
     }
 
+    private String limparCnpj(String cnpj) {
+        if (cnpj == null)
+            return null;
+        return cnpj.replaceAll("[^\\d]", "");
+    }
+
     public Fornecedor cadastrarFornecedor(FornecedorConsultaApiDTO dto) {
-        if (!validarCNPJ(dto.getCnpj())) {
+        String cnpjLimpo = limparCnpj(dto.getCnpj());
+        if (!validarCNPJ(cnpjLimpo)) {
             throw new BadRequestException("CNPJ inválido");
         }
 
@@ -52,23 +59,25 @@ public class FornecedorService {
                 .orElseThrow(() -> new ResourceNotFoundException("UF não encontrada"));
 
         Fornecedor fornecedor = new Fornecedor(
-                dto.getCnpj(),
+                cnpjLimpo,
                 dto.getRazaoSocial(),
                 dto.getNomeFantasia(),
-                dto.getCnae());
+                dto.getCnae()!= null ? dto.getCnae() : "");
         try {
             fornecedor = fornecedorRepository.save(fornecedor);
 
             EnderecoFornecedor endereco = new EnderecoFornecedor(
                     fornecedor,
                     entidadeUf,
-                    dto.getEndereco().getLogradouro(),
-                    dto.getEndereco().getNumero(),
-                    dto.getEndereco().getBairro(),
-                    dto.getEndereco().getMunicipio(),
-                    dto.getEndereco().getComplemento());
+                    dto.getEndereco().getLogradouro() != null ? dto.getEndereco().getLogradouro() : "",
+                    dto.getEndereco().getNumero() != null ? dto.getEndereco().getNumero() : "",
+                    dto.getEndereco().getBairro() != null ? dto.getEndereco().getBairro() : "",
+                    dto.getEndereco().getMunicipio() != null ? dto.getEndereco().getMunicipio() : "",
+                    dto.getEndereco().getComplemento() != null ? dto.getEndereco().getComplemento() : "",
+                    dto.getEndereco().getCep() != null ? dto.getEndereco().getCep() : ""
+                    );
             enderecoRepository.save(endereco);
-
+            System.out.println("CEP recebido: " + dto.getEndereco().getCep());
             return fornecedor;
         } catch (DataIntegrityViolationException e) {
             throw new BadRequestException("Fornecedor com este CNPJ já existe.");
@@ -100,7 +109,7 @@ public class FornecedorService {
             endereco.setBairro(root.path("bairro").asText(""));
             endereco.setMunicipio(root.path("municipio").asText());
             endereco.setUf(root.path("uf").asText());
-
+            endereco.setCep(root.path("cep").asText());
             return new FornecedorConsultaApiDTO(
                     cnpj,
                     root.path("razao_social").asText(),
@@ -117,12 +126,12 @@ public class FornecedorService {
     public List<FornecedorConsultaApiDTO> listarTodos() {
         List<Fornecedor> fornecedores = fornecedorRepository.findAll();
 
-    return fornecedores.stream().map(fornecedor -> {
-        EnderecoFornecedor endereco = enderecoRepository
-                .findByFornecedor(fornecedor)
-                .orElse(null); // ou lançar exceção se obrigatório
-        return new FornecedorConsultaApiDTO(fornecedor, endereco);
-    }).toList();
+        return fornecedores.stream().map(fornecedor -> {
+            EnderecoFornecedor endereco = enderecoRepository
+                    .findByFornecedor(fornecedor)
+                    .orElse(null); // ou lançar exceção se obrigatório
+            return new FornecedorConsultaApiDTO(fornecedor, endereco);
+        }).toList();
     }
 
     private boolean validarCNPJ(String cnpj) {
