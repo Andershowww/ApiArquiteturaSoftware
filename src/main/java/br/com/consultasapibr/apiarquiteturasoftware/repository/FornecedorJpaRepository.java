@@ -11,5 +11,6 @@ import java.util.Optional;
 @Profile("prod")
 public interface FornecedorJpaRepository extends JpaRepository<Fornecedor, Integer> {
     boolean existsByCnpj(String cnpj);
+    
     Optional<Fornecedor> findByCnpj(String cnpj);
 }

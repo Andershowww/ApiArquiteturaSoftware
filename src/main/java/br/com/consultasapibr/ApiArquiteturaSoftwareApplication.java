@@ -12,6 +12,6 @@ public class ApiArquiteturaSoftwareApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiArquiteturaSoftwareApplication.class, args);
         logger.info("Servidor Spring Boot iniciado com sucesso!");
-        logger.info("Acesse: http://localhost:8080/fornecedores");
+        logger.info("Inicie as chamadas aos endpoints desejados");
     }
 }

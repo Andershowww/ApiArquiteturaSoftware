@@ -19,7 +19,7 @@ public class UF {
         this.id = id;
         this.ufSigla = ufSigla;
     }
-    // Getters e Setters
+ 
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 

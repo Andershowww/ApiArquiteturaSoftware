@@ -34,7 +34,6 @@ public class Fornecedor {
         this.cnae = cnae;
     }
 
-    // 🔹 Getters e Setters
     public Integer getId() {
         return id;
     }

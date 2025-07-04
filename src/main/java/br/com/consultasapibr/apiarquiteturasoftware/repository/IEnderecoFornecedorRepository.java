@@ -7,5 +7,6 @@ import java.util.Optional;
 
 public interface IEnderecoFornecedorRepository {
     EnderecoFornecedor save(EnderecoFornecedor endereco);
+    
     Optional<EnderecoFornecedor> findByFornecedor(Fornecedor fornecedor);
 }
