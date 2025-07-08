@@ -1,4 +1,4 @@
-package br.com.consultasapibr.apiarquiteturasoftware.model;
+package br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model;
 
 import jakarta.persistence.*;
 

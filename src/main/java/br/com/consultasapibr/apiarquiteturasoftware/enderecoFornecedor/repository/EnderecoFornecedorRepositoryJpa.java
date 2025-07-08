@@ -1,7 +1,7 @@
-package br.com.consultasapibr.apiarquiteturasoftware.repository;
+package br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.repository;
 
-import br.com.consultasapibr.apiarquiteturasoftware.model.EnderecoFornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;

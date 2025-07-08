@@ -1,7 +1,8 @@
-package br.com.consultasapibr.apiarquiteturasoftware.dto;
+package br.com.consultasapibr.apiarquiteturasoftware.fornecedor.dto;
 
-import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.dto.EnderecoFornecedorDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
 
 public class FornecedorConsultaApiDTO {
     private int id;

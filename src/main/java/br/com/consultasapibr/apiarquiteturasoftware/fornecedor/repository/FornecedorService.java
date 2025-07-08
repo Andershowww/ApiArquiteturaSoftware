@@ -1,13 +1,10 @@
-package br.com.consultasapibr.apiarquiteturasoftware.service;
+package br.com.consultasapibr.apiarquiteturasoftware.fornecedor.repository;
 
-import br.com.consultasapibr.apiarquiteturasoftware.model.EnderecoFornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
-import br.com.consultasapibr.apiarquiteturasoftware.repository.IEnderecoFornecedorRepository;
-import br.com.consultasapibr.apiarquiteturasoftware.repository.IFornecedorRepository;
-import br.com.consultasapibr.apiarquiteturasoftware.repository.IUFRepository;
-import br.com.consultasapibr.apiarquiteturasoftware.dto.EnderecoFornecedorDTO;
-import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorConsultaApiDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.uf.model.UF;
+import br.com.consultasapibr.apiarquiteturasoftware.uf.repository.IUFRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.dto.EnderecoFornecedorDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.repository.IEnderecoFornecedorRepository;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -22,6 +19,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.ResourceNotFoundException;
+import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.dto.FornecedorConsultaApiDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.BadRequestException;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.ExternalApiException;
 

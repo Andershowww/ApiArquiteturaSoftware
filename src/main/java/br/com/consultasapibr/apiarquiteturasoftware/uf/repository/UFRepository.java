@@ -1,18 +1,20 @@
-package br.com.consultasapibr.apiarquiteturasoftware.repository;
+package br.com.consultasapibr.apiarquiteturasoftware.uf.repository;
 
-import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
+
+import br.com.consultasapibr.apiarquiteturasoftware.repository.UFJpaRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.uf.model.UF;
 
 import java.util.Optional;
 
 @Component
 @Profile("prod")
-public class UFRepositoryJpaAdapter implements IUFRepository {
+public class UFRepository implements IUFRepository {
 
     private final UFJpaRepository ufRepository;
 
-    public UFRepositoryJpaAdapter(UFJpaRepository ufRepository) {
+    public UFRepository(UFJpaRepository ufRepository) {
         this.ufRepository = ufRepository;
     }
 
