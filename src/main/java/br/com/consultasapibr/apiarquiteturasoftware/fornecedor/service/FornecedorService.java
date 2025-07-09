@@ -1,9 +1,8 @@
 package br.com.consultasapibr.apiarquiteturasoftware.fornecedor.service;
 
-import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.dto.EnderecoFornecedorDTO;
-import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.model.EnderecoFornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.repository.IEnderecoFornecedorRepository;
-import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.service.EnderecoFornecedorService;
+import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.dto.EnderecoFornecedorDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.service.EnderecoFornecedorService;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.BadRequestException;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.ExternalApiException;
 import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.dto.FornecedorConsultaApiDTO;

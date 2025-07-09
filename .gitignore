@@ -15,7 +15,7 @@ out/
 
 # Local environment/properties (não versionar configs sensíveis/locais)
 src/main/resources/application-prod.properties
-src/main/resources/application.properties
+
 # SQLite database files (se geradas localmente pelo app)
 *.sqlite
 *.db

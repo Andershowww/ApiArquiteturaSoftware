@@ -1,12 +1,11 @@
-package br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.service;
+package br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.service;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.model.EnderecoFornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.enderecoFornecedor.repository.IEnderecoFornecedorRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.repository.IEnderecoFornecedorRepository;
 import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
 
 @Service
@@ -14,7 +13,6 @@ public class EnderecoFornecedorService {
 
     private final IEnderecoFornecedorRepository enderecoRepository;
 
-    @Autowired
     public EnderecoFornecedorService(IEnderecoFornecedorRepository enderecoRepository) {
         this.enderecoRepository = enderecoRepository;
     }
