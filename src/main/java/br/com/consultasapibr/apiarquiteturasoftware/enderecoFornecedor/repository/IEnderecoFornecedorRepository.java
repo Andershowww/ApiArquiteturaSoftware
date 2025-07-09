@@ -5,8 +5,9 @@ import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
 
 import java.util.Optional;
 
-public interface IEnderecoFornecedorRepository {
-    EnderecoFornecedor save(EnderecoFornecedor endereco);
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface IEnderecoFornecedorRepository extends JpaRepository<EnderecoFornecedor, Integer> {
+        
     Optional<EnderecoFornecedor> findByFornecedor(Fornecedor fornecedor);
 }

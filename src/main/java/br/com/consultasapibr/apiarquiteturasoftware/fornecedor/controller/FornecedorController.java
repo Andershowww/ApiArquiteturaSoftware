@@ -2,7 +2,7 @@ package br.com.consultasapibr.apiarquiteturasoftware.fornecedor.controller;
 
 import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.dto.FornecedorConsultaApiDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.repository.FornecedorService;
+import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.service.FornecedorService;
 
 import java.util.List;
 
