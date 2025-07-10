@@ -1,7 +1,7 @@
-package br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.repository;
+package br.com.consultasapibr.apiarquiteturasoftware.repository;
 
-import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.model.EnderecoFornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 
 import java.util.Optional;
 

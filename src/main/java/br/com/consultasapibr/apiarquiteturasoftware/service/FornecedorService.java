@@ -1,15 +1,13 @@
-package br.com.consultasapibr.apiarquiteturasoftware.fornecedor.service;
+package br.com.consultasapibr.apiarquiteturasoftware.service;
 
-import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.dto.EnderecoFornecedorDTO;
-import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.model.EnderecoFornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.service.EnderecoFornecedorService;
+import br.com.consultasapibr.apiarquiteturasoftware.dto.EnderecoFornecedorDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorConsultaApiDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.BadRequestException;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.ExternalApiException;
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.dto.FornecedorConsultaApiDTO;
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.repository.FornecedorRepository;
-import br.com.consultasapibr.apiarquiteturasoftware.uf.model.UF;
-import br.com.consultasapibr.apiarquiteturasoftware.uf.service.UFService;
+import br.com.consultasapibr.apiarquiteturasoftware.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
+import br.com.consultasapibr.apiarquiteturasoftware.repository.FornecedorRepository;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;

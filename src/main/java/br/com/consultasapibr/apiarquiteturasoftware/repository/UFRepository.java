@@ -1,10 +1,10 @@
-package br.com.consultasapibr.apiarquiteturasoftware.uf.repository;
+package br.com.consultasapibr.apiarquiteturasoftware.repository;
 
 import org.springframework.stereotype.Component;
-import br.com.consultasapibr.apiarquiteturasoftware.uf.model.UF;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
 
 import java.util.Optional;
 

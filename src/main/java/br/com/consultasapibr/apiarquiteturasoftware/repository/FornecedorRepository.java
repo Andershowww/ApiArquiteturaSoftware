@@ -1,4 +1,4 @@
-package br.com.consultasapibr.apiarquiteturasoftware.fornecedor.repository;
+package br.com.consultasapibr.apiarquiteturasoftware.repository;
 
 import java.util.Optional;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
 
 @Component
 @Repository

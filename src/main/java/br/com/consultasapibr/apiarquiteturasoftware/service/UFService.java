@@ -1,7 +1,7 @@
-package br.com.consultasapibr.apiarquiteturasoftware.uf.service;
-import br.com.consultasapibr.apiarquiteturasoftware.uf.model.UF;
-import br.com.consultasapibr.apiarquiteturasoftware.uf.repository.UFRepository;
+package br.com.consultasapibr.apiarquiteturasoftware.service;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.ResourceNotFoundException;
+import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
+import br.com.consultasapibr.apiarquiteturasoftware.repository.UFRepository;
 
 import java.util.List;
 

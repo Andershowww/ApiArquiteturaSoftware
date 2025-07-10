@@ -1,8 +1,8 @@
-package br.com.consultasapibr.apiarquiteturasoftware.fornecedor.controller;
+package br.com.consultasapibr.apiarquiteturasoftware.controller;
 
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.dto.FornecedorConsultaApiDTO;
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.service.FornecedorService;
+import br.com.consultasapibr.apiarquiteturasoftware.dto.FornecedorConsultaApiDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.service.FornecedorService;
 
 import java.util.List;
 
