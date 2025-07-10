@@ -23,6 +23,6 @@ public class Uf {
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
-    public String getUF() { return ufSigla; }
+    public String getUf() { return ufSigla; }
     public void setUF(String uf) { this.ufSigla = uf;}
 }
