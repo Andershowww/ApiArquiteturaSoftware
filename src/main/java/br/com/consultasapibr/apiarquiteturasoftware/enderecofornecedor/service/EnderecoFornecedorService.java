@@ -5,15 +5,15 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.model.EnderecoFornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.repository.IEnderecoFornecedorRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.repository.EnderecoFornecedorRepository;
 import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
 
 @Service
 public class EnderecoFornecedorService {
 
-    private final IEnderecoFornecedorRepository enderecoRepository;
+    private final EnderecoFornecedorRepository enderecoRepository;
 
-    public EnderecoFornecedorService(IEnderecoFornecedorRepository enderecoRepository) {
+    public EnderecoFornecedorService(EnderecoFornecedorRepository enderecoRepository) {
         this.enderecoRepository = enderecoRepository;
     }
 

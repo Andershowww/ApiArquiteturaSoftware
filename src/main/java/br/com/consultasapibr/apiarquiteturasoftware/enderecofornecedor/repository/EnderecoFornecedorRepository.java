@@ -7,7 +7,7 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IEnderecoFornecedorRepository extends JpaRepository<EnderecoFornecedor, Integer> {
+public interface EnderecoFornecedorRepository extends JpaRepository<EnderecoFornecedor, Integer> {
         
     Optional<EnderecoFornecedor> findByFornecedor(Fornecedor fornecedor);
 }
