@@ -26,13 +26,13 @@ public class FornecedorService {
 
     private final FornecedorRepository fornecedorRepository;
     private final EnderecoFornecedorService enderecoFornecedorService;
-    private final UFService ufService;
+    private final UfService ufService;
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
 
     public FornecedorService(FornecedorRepository fornecedorRepository,
     EnderecoFornecedorService enderecoFornecedorService,
-                             UFService ufService) {
+                             UfService ufService) {
         this.fornecedorRepository = fornecedorRepository;
         this.enderecoFornecedorService = enderecoFornecedorService;
         this.ufService = ufService;

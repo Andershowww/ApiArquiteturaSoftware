@@ -4,13 +4,13 @@ import org.springframework.stereotype.Component;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.consultasapibr.apiarquiteturasoftware.model.UF;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Uf;
 
 import java.util.Optional;
 
 @Component
 @Repository
-public interface UFRepository extends JpaRepository<UF, Integer> {
+public interface UfRepository extends JpaRepository<Uf, Integer> {
     
-    Optional<UF> findByUfSigla(String uf);   
+    Optional<Uf> findByUfSigla(String uf);   
 }

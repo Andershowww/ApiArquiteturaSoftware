@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "UF")
-public class UF {
+public class Uf {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,9 +13,9 @@ public class UF {
 
     @Column(name = "UF")
     private String ufSigla;
-    public UF() {
+    public Uf() {
     }
-    public UF(Integer id, String ufSigla) {
+    public Uf(Integer id, String ufSigla) {
         this.id = id;
         this.ufSigla = ufSigla;
     }
