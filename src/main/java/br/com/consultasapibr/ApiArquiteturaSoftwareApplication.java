@@ -13,5 +13,6 @@ public class ApiArquiteturaSoftwareApplication {
         SpringApplication.run(ApiArquiteturaSoftwareApplication.class, args);
         logger.info("Servidor Spring Boot iniciado com sucesso!");
         logger.info("Inicie as chamadas aos endpoints desejados");
+        logger.info("Se preferir, use o swagger: \"http://localhost:8080/swagger-ui.html\"");
     }
 }

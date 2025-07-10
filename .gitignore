@@ -5,7 +5,7 @@ target/
 
 # Compiled Java class files
 *.class
-
+application.properties
 # Build output
 bin/
 out/

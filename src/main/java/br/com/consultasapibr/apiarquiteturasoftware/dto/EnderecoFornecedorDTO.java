@@ -20,7 +20,7 @@ public class EnderecoFornecedorDTO {
         this.complemento = endereco.getComplemento();
         this.bairro = endereco.getBairro();
         this.municipio = endereco.getMunicipio();
-        this.uf = endereco.getUf() != null ? endereco.getUf().getUF() : null;
+        this.uf = endereco.getUf() != null ? endereco.getUf().getUf() : null;
         this.cep = endereco.getCep();
     }
 
