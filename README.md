@@ -73,9 +73,8 @@ ApiArquiteturaSoftware/
 │   │   │       ├── util/             # Classes utilitárias
 │   │   │       └── ApiArquiteturaSoftwareApplication.java  # Classe principal
 │   │   └── resources/
-│   │       ├── application.properties       # Configurações principais
-│   │       ├── application-dev.properties   # Configurações para perfil dev
-│   │       └── application-prod-exemplo.properties  # Configurações para perfil produção exemplo
+│   │       └── application.properties       # Configurações principais       
+│   │       
 │   └── test/
 │       └── java/
 │           └── br/com/consultasapibr/apiarquiteturasoftware/  # Testes automatizados
@@ -115,11 +114,9 @@ ApiArquiteturaSoftware/
 3. Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, perfis de execução, entre outros.
    Você encontrará os seguintes arquivos na pasta src/main/resources/:
    application.properties
-   Arquivo principal de configuração, que serve como base para todos os perfis. Aqui você pode definir configurações comuns que serão usadas em todos os ambientes (dev, prod, etc), use dev para manipular dados em memória e prod para manipular com banco de dados.
+   Arquivo principal de configuração, onde deve ser configurado o acesso ao seu banco de dados SQL SERVER
    application-dev.properties
-   Arquivo específico para o perfil de desenvolvimento ("dev"). Geralmente contém configurações para facilitar o desenvolvimento, como banco de dados em memória H2, logs mais detalhados, entre outros.
-   application-prod.properties
-   Arquivo para o perfil de produção ("prod"). Deve conter as configurações reais, como conexão com o banco SQL Server, segurança, níveis de log mais restritos, etc, você deve criar esse arquivo, pode copiar do arquivo application-prod-exemplo.properties.
+ 
     
 4. Execute a aplicação:
     ```bash
@@ -129,7 +126,7 @@ ApiArquiteturaSoftware/
 
 5. Acesse a API:
     - Endpoints disponíveis em: `http://localhost:8080`
-    - Endpoint legado: `http://localhost:8080/fornecedores`
+    
 
 ---
 
@@ -148,14 +145,21 @@ ApiArquiteturaSoftware/
     POST http://localhost:8080/fornecedores
     Content-Type: application/json
 
-    {
-        "cnpj": "12345678000100",
-        "razaoSocial": "Empresa Exemplo LTDA",
-        "nomeFantasia": "Exemplo",
-        "logradouro": "Rua das Flores, 123",
-        "municipio": "São Paulo",
-        "uf": "SP"
+{
+    "cnpj": "19131243000196",
+    "razaoSocial": "OPEN KNOWLEDGE BRASIL",
+    "nomeFantasia": "REDE PELO CONHECIMENTO LIVRE",
+    "cnae": "",
+    "endereco": {
+        "logradouro": "PAULISTA 37",
+        "numero": "37",
+        "complemento": "ANDAR 4",
+        "bairro": "BELA VISTA",
+        "municipio": "SAO PAULO",
+        "uf": "SP",
+        "cep": "01311902"
     }
+}
     ```
 
 ---
