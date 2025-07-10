@@ -1,6 +1,6 @@
-package br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.dto;
+package br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.dto;
 
-import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.model.EnderecoFornecedor;
 
 public class EnderecoFornecedorDTO {
     private String logradouro;

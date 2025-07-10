@@ -1,6 +1,6 @@
-package br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.model;
+package br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.model;
 
-import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.dto.EnderecoFornecedorDTO;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.dto.EnderecoFornecedorDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
 import br.com.consultasapibr.apiarquiteturasoftware.uf.model.UF;
 import jakarta.persistence.*;

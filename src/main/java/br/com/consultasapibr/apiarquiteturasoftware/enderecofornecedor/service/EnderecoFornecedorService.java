@@ -1,11 +1,11 @@
-package br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.service;
+package br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.service;
 
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.model.EnderecoFornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.endereco_fornecedor.repository.IEnderecoFornecedorRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.model.EnderecoFornecedor;
+import br.com.consultasapibr.apiarquiteturasoftware.enderecofornecedor.repository.IEnderecoFornecedorRepository;
 import br.com.consultasapibr.apiarquiteturasoftware.fornecedor.model.Fornecedor;
 
 @Service
