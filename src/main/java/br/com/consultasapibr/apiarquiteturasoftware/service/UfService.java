@@ -7,10 +7,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 @Service
-public class UfServiceTemp {
+public class UfService {
     private final UfRepository ufRepository ;
 
-    public UfServiceTemp(UfRepository ufRepository) {
+    public UfService(UfRepository ufRepository) {
         this.ufRepository = ufRepository;
     }
 
