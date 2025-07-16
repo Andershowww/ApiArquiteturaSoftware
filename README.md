@@ -1,12 +1,3 @@
-Projeto API - Engenharia de Softare
-*****************************************************************
-controller - Recebe requisições HTTP e responde à API REST	
-service - Contém a lógica de negócio e integração com APIs externas	
-repository - Simula persistência de dados (atualmente em memória)	
-model -	Define as entidades do domínio da aplicação	
-dto	- Define objetos para entrada de dados (input JSON)
-util - Utilitários auxiliares (ex: conversão JSON, resposta)
-
 # ApiArquiteturaSoftware
 
 Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https://brasilapi.com.br/)
