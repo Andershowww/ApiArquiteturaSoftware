@@ -204,7 +204,7 @@ SET IDENTITY_INSERT [dbo].[UF] OFF
 
 3. Banco de dados:
    
-    O projeto utiliza banco de dados **SQL Server**, você pode usar a estrutura disponibilizada na seção: [Script de criação tabelas SQL Server](#script-de-criacao-tabelas-sql-server).
+    O projeto utiliza banco de dados **SQL Server**, você pode usar a estrutura disponibilizada na seção: [Script de criação tabelas SQL Server](#script-de-criação-tabelas-sql-server).
 
     Após criar seu banco de dados, preencha a tabela `UF` com todas as unidades federativas disponíveis na seção: [Script Insert UF](#script-insert-uf).
 
