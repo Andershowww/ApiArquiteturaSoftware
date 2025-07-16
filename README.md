@@ -214,7 +214,7 @@ SET IDENTITY_INSERT [dbo].[UF] OFF
           2. Em Configuração de Rede do SQL Server, clique em Protocolos para SQLEXPRESS ou MSSQLSERVER.
           3. Clique com o botão direito do mouse em TCP/IP, em seguida, escolha Ativar no menu suspenso.
      ```
-     Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, entre outros. Nele você deve substituir os dados exemplos pela sua conexão com o banco SQL Server criado.    
+     Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, entre outros. Nele você deve substituir os dados exemplos que estão dentro do arquivo pela sua conexão com o banco SQL Server criado.    
  
 1. Execute a aplicação:
     ```bash
@@ -242,22 +242,21 @@ SET IDENTITY_INSERT [dbo].[UF] OFF
     ```
     POST http://localhost:8080/fornecedores
     Content-Type: application/json
-
-{
-    "cnpj": "19131243000196",
-    "razaoSocial": "OPEN KNOWLEDGE BRASIL",
-    "nomeFantasia": "REDE PELO CONHECIMENTO LIVRE",
-    "cnae": "",
-    "endereco": {
-        "logradouro": "PAULISTA 37",
-        "numero": "37",
-        "complemento": "ANDAR 4",
-        "bairro": "BELA VISTA",
-        "municipio": "SAO PAULO",
-        "uf": "SP",
-        "cep": "01311902"
-    }
-}
+        {
+            "cnpj": "19131243000196",
+            "razaoSocial": "OPEN KNOWLEDGE BRASIL",
+            "nomeFantasia": "REDE PELO CONHECIMENTO LIVRE",
+            "cnae": "",
+            "endereco": {
+                "logradouro": "PAULISTA 37",
+                "numero": "37",
+                "complemento": "ANDAR 4",
+                "bairro": "BELA VISTA",
+                "municipio": "SAO PAULO",
+                "uf": "SP",
+                "cep": "01311902"
+            }
+        }
     ```
 
 ---
