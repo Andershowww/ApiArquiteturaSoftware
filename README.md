@@ -195,8 +195,10 @@ SET IDENTITY_INSERT [dbo].[UF] OFF
 
 3. Banco de dados:
    
-   - O projeto utiliza banco de dados **SQL Server**, você pode usar a estrutura disponibilizada na seção: [Script de criação tabelas SQL Server](#script-de-criação-tabelas-sql-server).
+   - O projeto utiliza banco de dados **SQL Server**, para desenvolvimento foi utilizado o SQL Server Management Studio, você pode usar a estrutura disponibilizada na seção: [Script de criação tabelas SQL Server](#script-de-criação-tabelas-sql-server).
 
+   - Abra o gerenciador do seu banco de dados, insira o script de criação de tabelas e rode, depois rode o script de insert UF.
+    
    - Após criar seu banco de dados, preencha a tabela `UF` com todas as unidades federativas disponíveis na seção: [Script Insert UF](#script-insert-uf).
 
    - Procedimento para liberar o TCP/IP no configuration manager (caso não seja realizado, o servidor não será encontrado):
@@ -206,13 +208,13 @@ SET IDENTITY_INSERT [dbo].[UF] OFF
      
    - Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, entre outros. Nele você deve substituir os dados exemplos que estão dentro do arquivo pela sua conexão com o banco SQL Server criado.    
  
-4. Execute a aplicação:
+5. Execute a aplicação:
     ```bash
     mvn spring-boot:run
     ```
    Ou execute a classe `ApiArquiteturaSoftwareApplication` pelo seu IDE.
 
-5. Acesse a API:
+6. Acesse a API:
     - Endpoints disponíveis em: `http://localhost:8080` (valide se a porta que está rodando é a 8080)
     
 
