@@ -18,12 +18,12 @@ Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https
 - [ApiArquiteturaSoftware](#apiarquiteturasoftware)
   - [Índice](#índice)
   - [Descrição](#descrição)
-    - [Script de criação tabelas SQL Server](#script-de-criação-tabelas-sql-server)
-    - [Script Insert UF](#script-insert-uf)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
   - [Estrutura do Projeto](#estrutura-do-projeto)
   - [Como Rodar o Projeto](#como-rodar-o-projeto)
     - [Pré-requisitos](#pré-requisitos)
+    - [Script de criação tabelas SQL Server](#script-de-criação-tabelas-sql-server)
+    - [Script Insert UF](#script-insert-uf)
     - [Passos](#passos)
   - [Exemplos de Uso](#exemplos-de-uso)
   - [Padrões de Código e Organização](#padrões-de-código-e-organização)
@@ -48,6 +48,57 @@ DTO: define objetos para entrada e saída de dados JSON
 Util: utilitários auxiliares (ex: conversão, respostas padronizadas)
 
 ---
+
+## Tecnologias Utilizadas
+
+- **Java 17+**
+- **Spring Boot 3+**
+- **Maven**
+- **SQLSERVER** (via JDBC)
+- **HTTPServer (Sun)** para endpoints legados
+
+---
+
+## Estrutura do Projeto
+
+```
+ApiArquiteturaSoftware/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── br/com/consultasapibr/apiarquiteturasoftware/
+│   │   │       ├── controller/       # Endpoints REST
+│   │   │       ├── dto/              # Data Transfer Objects (entrada/saída JSON)
+│   │   │       ├── model/            # Entidades JPA / domínio
+│   │   │       ├── repository/       # Interfaces JPA para acesso a dados
+│   │   │       ├── service/          # Lógica de negócio
+│   │   │       ├── util/             # Classes utilitárias
+│   │   │       └── ApiArquiteturaSoftwareApplication.java  # Classe principal
+│   │   └── resources/
+│   │       └── application.properties       # Configurações principais       
+│   │       
+│   └── test/
+│       └── java/
+│           └── br/com/consultasapibr/apiarquiteturasoftware/  # Testes automatizados
+├── pom.xml
+└── README.md
+```
+
+- **controller/**: Endpoints/rest controllers.
+- **service/**: Lógica de negócio.
+- **repository/**: Persistência de dados.
+- **model/**: Entidades do sistema.
+- **dto/**: Objetos de transferência de dados.
+- **util/**: Classes utilitárias.
+---
+
+## Como Rodar o Projeto
+
+### Pré-requisitos
+
+- Java 17 ou superior
+- Maven 3.6+
+- (Opcional) IntelliJ IDEA - VScode com Extensões para compilar o projeto
 ### Script de criação tabelas SQL Server
 
 ```sql
@@ -137,56 +188,6 @@ GO
 SET IDENTITY_INSERT [dbo].[UF] OFF
 
 ```
-## Tecnologias Utilizadas
-
-- **Java 17+**
-- **Spring Boot 3+**
-- **Maven**
-- **SQLSERVER** (via JDBC)
-- **HTTPServer (Sun)** para endpoints legados
-
----
-
-## Estrutura do Projeto
-
-```
-ApiArquiteturaSoftware/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── br/com/consultasapibr/apiarquiteturasoftware/
-│   │   │       ├── controller/       # Endpoints REST
-│   │   │       ├── dto/              # Data Transfer Objects (entrada/saída JSON)
-│   │   │       ├── model/            # Entidades JPA / domínio
-│   │   │       ├── repository/       # Interfaces JPA para acesso a dados
-│   │   │       ├── service/          # Lógica de negócio
-│   │   │       ├── util/             # Classes utilitárias
-│   │   │       └── ApiArquiteturaSoftwareApplication.java  # Classe principal
-│   │   └── resources/
-│   │       └── application.properties       # Configurações principais       
-│   │       
-│   └── test/
-│       └── java/
-│           └── br/com/consultasapibr/apiarquiteturasoftware/  # Testes automatizados
-├── pom.xml
-└── README.md
-```
-
-- **controller/**: Endpoints/rest controllers.
-- **service/**: Lógica de negócio.
-- **repository/**: Persistência de dados.
-- **model/**: Entidades do sistema.
-- **dto/**: Objetos de transferência de dados.
-- **util/**: Classes utilitárias.
----
-
-## Como Rodar o Projeto
-
-### Pré-requisitos
-
-- Java 17 ou superior
-- Maven 3.6+
-- (Opcional) IntelliJ IDEA - VScode com Extensões para compilar o projeto
 
 ### Passos
 
