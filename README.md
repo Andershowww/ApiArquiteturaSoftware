@@ -209,6 +209,7 @@ SET IDENTITY_INSERT [dbo].[UF] OFF
    - Após criar seu banco de dados, preencha a tabela `UF` com todas as unidades federativas disponíveis na seção: [Script Insert UF](#script-insert-uf).
 
    - Procedimento para liberar o TCP/IP no configuration manager (caso não seja realizado, o servidor não será encontrado.):
+  
           1. Abrir o Configuration Manager.
           2. Em Configuração de Rede do SQL Server, clique em Protocolos para SQLEXPRESS ou MSSQLSERVER.
           3. Clique com o botão direito do mouse em TCP/IP, em seguida, escolha Ativar no menu suspenso.
