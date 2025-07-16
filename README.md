@@ -203,9 +203,10 @@ SET IDENTITY_INSERT [dbo].[UF] OFF
     ```
 
 3. Banco de dados:
-    O projeto utiliza banco de dados **SQL Server**, você pode usar a estrutura disponibilizada na seção: [Script de criação tabelas SQL Server](#script-de-criacao-tabelas-sql-server).
-    Após criar seu banco de dados, preencha a tabela `UF` com todas as unidades federativas disponíveis na seção: [Script Insert UF](#script-insert-uf).
-    Procedimento para liberar o TCP/IP no configuration manager (caso não seja realizado, o servidor não será encontrado.):
+O projeto utiliza banco de dados **SQL Server**, você pode usar a estrutura disponibilizada na seção: [Script de criação tabelas SQL Server](#script-de-criacao-tabelas-sql-server).
+Após criar seu banco de dados, preencha a tabela `UF` com todas as unidades federativas disponíveis na seção: [Script Insert UF](#script-insert-uf).
+
+Procedimento para liberar o TCP/IP no configuration manager (caso não seja realizado, o servidor não será encontrado.):
     ```bash
           1. Abrir o Configuration Manager.
           2. Em Configuração de Rede do SQL Server, clique em Protocolos para SQLEXPRESS ou MSSQLSERVER.
