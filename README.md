@@ -90,9 +90,14 @@ ApiArquiteturaSoftware/
 - Java 17 ou superior
 - Maven 3.6+
 - (Opcional) IntelliJ IDEA - VScode com Extensões para compilar o projeto
-### Script de criação tabelas SQL Server
+### Script de criação de banco de dados e suas tabelas SQL Server
 
 ```sql
+CREATE DATABASE ApiArquiteturaDB;
+GO
+use ApiArquiteturaDB;
+GO
+
 CREATE TABLE UF (
   id_uf INT IDENTITY(1,1) PRIMARY KEY,
   uf NVARCHAR(2) NOT NULL
@@ -117,66 +122,49 @@ CREATE TABLE EnderecoFornecedor (
   complemento NVARCHAR(50),
   cep NVARCHAR(50)
 );
+
+GO
 ```
 ### Script Insert UF
 ```
-SET IDENTITY_INSERT [dbo].[UF] ON 
+USE ApiArquiteturaDB;
 GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (2, N'AC')
+
+SET IDENTITY_INSERT [dbo].[UF] ON;
 GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (3, N'AL')
+
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (2, N'AC');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (3, N'AL');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (4, N'AP');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (5, N'AM');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (6, N'BA');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (7, N'CE');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (8, N'DF');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (9, N'ES');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (10, N'GO');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (11, N'MA');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (12, N'MT');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (13, N'MS');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (14, N'MG');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (15, N'PA');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (16, N'PB');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (17, N'PR');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (18, N'PE');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (19, N'PI');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (20, N'RJ');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (21, N'RN');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (22, N'RS');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (23, N'RO');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (24, N'RR');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (25, N'SC');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (26, N'SP');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (27, N'SE');
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (28, N'TO');
 GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (4, N'AP')
+
+SET IDENTITY_INSERT [dbo].[UF] OFF;
 GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (5, N'AM')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (6, N'BA')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (7, N'CE')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (8, N'DF')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (9, N'ES')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (10, N'GO')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (11, N'MA')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (12, N'MT')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (13, N'MS')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (14, N'MG')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (15, N'PA')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (16, N'PB')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (17, N'PR')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (18, N'PE')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (19, N'PI')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (20, N'RJ')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (21, N'RN')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (22, N'RS')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (23, N'RO')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (24, N'RR')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (25, N'SC')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (26, N'SP')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (27, N'SE')
-GO
-INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (28, N'TO')
-GO
-SET IDENTITY_INSERT [dbo].[UF] OFF
+
 
 ```
 
@@ -197,7 +185,7 @@ SET IDENTITY_INSERT [dbo].[UF] OFF
    
    - O projeto utiliza banco de dados **SQL Server**, para desenvolvimento foi utilizado o SQL Server Management Studio, você pode usar a estrutura disponibilizada na seção: [Script de criação tabelas SQL Server](#script-de-criação-tabelas-sql-server).
 
-   - Abra o gerenciador do seu banco de dados, insira o script de criação de tabelas e rode,  após criar as suas tabelas, rode o script de insert UF separadamente.
+   - Abra o gerenciador do seu banco de dados, insira o script de criação de banco de dados e suas tabelas e rode,  após criar o banco de dados e suas tabelas, rode o script de insert UF separadamente.
     
    - Após criar seu banco de dados, preencha a tabela `UF` com todas as unidades federativas disponíveis na seção: [Script Insert UF](#script-insert-uf).
 
