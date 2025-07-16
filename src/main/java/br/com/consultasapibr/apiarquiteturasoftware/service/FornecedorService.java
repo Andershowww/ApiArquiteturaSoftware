@@ -6,7 +6,7 @@ import br.com.consultasapibr.apiarquiteturasoftware.exception.BadRequestExceptio
 import br.com.consultasapibr.apiarquiteturasoftware.exception.ExternalApiException;
 import br.com.consultasapibr.apiarquiteturasoftware.model.EnderecoFornecedor;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Fornecedor;
-import br.com.consultasapibr.apiarquiteturasoftware.model.UFTemp;
+import br.com.consultasapibr.apiarquiteturasoftware.model.Uf;
 import br.com.consultasapibr.apiarquiteturasoftware.repository.FornecedorRepository;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -51,7 +51,7 @@ public class FornecedorService {
             throw new BadRequestException("Fornecedor com este CNPJ já existe.");
         }
 
-        UFTemp uf = ufService.buscarPorSigla(dto.getEndereco().getUf());
+        Uf uf = ufService.buscarPorSigla(dto.getEndereco().getUf());
 
         Fornecedor fornecedor = new Fornecedor(
                 cnpj,

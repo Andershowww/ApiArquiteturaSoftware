@@ -18,7 +18,7 @@ public class EnderecoFornecedor {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_uf", nullable = false)
-    private UFTemp uf;
+    private Uf uf;
 
     @Column(name = "logradouro", nullable = false, length = 50)
     private String logradouro;
@@ -42,7 +42,7 @@ public class EnderecoFornecedor {
     public EnderecoFornecedor() {
     }
 
-    public EnderecoFornecedor(Fornecedor fornecedor,UFTemp uf, EnderecoFornecedorDTO dto) {
+    public EnderecoFornecedor(Fornecedor fornecedor,Uf uf, EnderecoFornecedorDTO dto) {
         this.fornecedor = fornecedor;
         this.uf = uf;
         this.logradouro = dto.getLogradouro();
@@ -69,11 +69,11 @@ public class EnderecoFornecedor {
         this.fornecedor = fornecedor;
     }
 
-    public UFTemp getUf() {
+    public Uf getUf() {
         return uf;
     }
 
-    public void setUf(UFTemp uf) {
+    public void setUf(Uf uf) {
         this.uf = uf;
     }
 
