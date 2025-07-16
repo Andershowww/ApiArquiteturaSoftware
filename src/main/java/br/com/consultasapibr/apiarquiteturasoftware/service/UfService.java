@@ -1,28 +1,28 @@
 package br.com.consultasapibr.apiarquiteturasoftware.service;
 import br.com.consultasapibr.apiarquiteturasoftware.exception.ResourceNotFoundException;
-import br.com.consultasapibr.apiarquiteturasoftware.model.Uf;
-import br.com.consultasapibr.apiarquiteturasoftware.repository.UfRepository;
+import br.com.consultasapibr.apiarquiteturasoftware.model.UFTemp;
+import br.com.consultasapibr.apiarquiteturasoftware.repository.UFRepositoryTemp;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 @Service
 public class UfService {
-    private final UfRepository ufRepository ;
+    private final UFRepositoryTemp ufRepository ;
 
-    public UfService(UfRepository ufRepository) {
+    public UfService(UFRepositoryTemp ufRepository) {
         this.ufRepository = ufRepository;
     }
 
-    public Uf salvar(Uf uf) {
+    public UFTemp salvar(UFTemp uf) {
         return ufRepository.save(uf);
     }
 
-    public List<Uf> listarTodos() {
+    public List<UFTemp> listarTodos() {
         return ufRepository.findAll();
     }
 
-    public Uf buscarPorSigla(String sigla) {
+    public UFTemp buscarPorSigla(String sigla) {
         return ufRepository.findByUfSigla(sigla)
                 .orElseThrow(() -> new ResourceNotFoundException("UF não encontrada"));
     }
