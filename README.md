@@ -18,6 +18,8 @@ Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https
 - [ApiArquiteturaSoftware](#apiarquiteturasoftware)
   - [Índice](#índice)
   - [Descrição](#descrição)
+    - [Script de criação tabelas SQL Server](#script-de-criação-tabelas-sql-server)
+    - [Script Insert UF](#script-insert-uf)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
   - [Estrutura do Projeto](#estrutura-do-projeto)
   - [Como Rodar o Projeto](#como-rodar-o-projeto)
@@ -46,7 +48,95 @@ DTO: define objetos para entrada e saída de dados JSON
 Util: utilitários auxiliares (ex: conversão, respostas padronizadas)
 
 ---
+### Script de criação tabelas SQL Server
 
+```sql
+CREATE TABLE UF (
+  id_uf INT IDENTITY(1,1) PRIMARY KEY,
+  uf NVARCHAR(2) NOT NULL
+);
+
+CREATE TABLE Fornecedor (
+  id_fornecedor INT IDENTITY(1,1) PRIMARY KEY,
+  cnpj VARCHAR(14) NOT NULL,
+  razao_social NVARCHAR(100),
+  nome_fantasia NVARCHAR(100),
+  cnae NVARCHAR(20)
+);
+
+CREATE TABLE EnderecoFornecedor (
+  id_endereco INT IDENTITY(1,1) PRIMARY KEY,
+  id_fornecedor INT FOREIGN KEY REFERENCES Fornecedor(id_fornecedor),
+  id_uf INT FOREIGN KEY REFERENCES UF(id_uf),
+  logradouro NVARCHAR(50),
+  numero NVARCHAR(10),
+  bairro NVARCHAR(50),
+  municipio NVARCHAR(50),
+  complemento NVARCHAR(50),
+  cep NVARCHAR(50)
+);
+```
+### Script Insert UF
+```
+SET IDENTITY_INSERT [dbo].[UF] ON 
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (2, N'AC')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (3, N'AL')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (4, N'AP')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (5, N'AM')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (6, N'BA')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (7, N'CE')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (8, N'DF')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (9, N'ES')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (10, N'GO')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (11, N'MA')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (12, N'MT')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (13, N'MS')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (14, N'MG')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (15, N'PA')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (16, N'PB')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (17, N'PR')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (18, N'PE')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (19, N'PI')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (20, N'RJ')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (21, N'RN')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (22, N'RS')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (23, N'RO')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (24, N'RR')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (25, N'SC')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (26, N'SP')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (27, N'SE')
+GO
+INSERT [dbo].[UF] ([id_uf], [uf]) VALUES (28, N'TO')
+GO
+SET IDENTITY_INSERT [dbo].[UF] OFF
+
+```
 ## Tecnologias Utilizadas
 
 - **Java 17+**
@@ -111,13 +201,17 @@ ApiArquiteturaSoftware/
     mvn clean install
     ```
 
-3. Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, perfis de execução, entre outros.
-   Você encontrará os seguintes arquivos na pasta src/main/resources/:
-   application.properties
-   Arquivo principal de configuração, onde deve ser configurado o acesso ao seu banco de dados SQL SERVER
-   application-dev.properties
- 
-    
+3. Banco de dados:
+    ```bash
+    O projeto utiliza banco de dados SQL Server, você pode usar a estrutura disponibilizada na seção: (#script-de-criação-tabelas-sql-server).
+    Após criar seu banco de dados, preencha a tabela UF com todas as unidades federativas na seção: (#script-insert-uf).
+    Procedimento para liberar o TCP/IP no configuration manager (caso não seja realizado, o servidor não será encontrado.):
+            Abrir o Configuration Manager.
+            Em Configuração de Rede do SQL Server, clique em Protocolos para SQLEXPRESS ou MSSQLSERVER.
+            Clique com o botão direito do mouse em TCP/IP, em seguida, escolha Ativar no menu suspenso.
+    Configure o banco de dados no arquivo src/main/resources/application.properties, o projeto utiliza arquivos de configuração no formato .properties para definir parâmetros essenciais, como conexão com banco de dados, portas, entre outros.
+    Nele você deve substituir os dados exemplos pela sua conexão com o banco SQL Server criado.
+     ```
 4. Execute a aplicação:
     ```bash
     mvn spring-boot:run
@@ -125,7 +219,7 @@ ApiArquiteturaSoftware/
    Ou execute a classe `ApiArquiteturaSoftwareApplication` pelo seu IDE.
 
 5. Acesse a API:
-    - Endpoints disponíveis em: `http://localhost:8080`
+    - Endpoints disponíveis em: `http://localhost:8080` (valide se a porta que está rodando é a 8080)
     
 
 ---
