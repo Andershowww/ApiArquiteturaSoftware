@@ -1,19 +1,68 @@
-# Java
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Compiled Java class files
+*.class
+application.properties
+# Build output
 bin/
-/out/
-/target/
-/*.class
-
-# IntelliJ IDEA
-.idea/
-/*.iml
-
-# VSCode
-.vscode
-
-# Sistema operacional
-.DS_Store
-Thumbs.db
+out/
 
 # Logs
 *.log
+
+# Local environment/properties (não versionar configs sensíveis/locais)
+src/main/resources/application-prod.properties
+
+# SQLite database files (se geradas localmente pelo app)
+*.sqlite
+*.db
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+### IntelliJ IDEA ###
+.idea/modules.xml
+.idea/jarRepositories.xml
+.idea/compiler.xml
+.idea/libraries/
+*.iws
+*.iml
+*.ipr
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+/.idea/
+
+# Arquivos temporários e backup
+*~
+*.swp
+
+# Arquivos de cobertura de teste
+coverage/
+jacoco.exec
