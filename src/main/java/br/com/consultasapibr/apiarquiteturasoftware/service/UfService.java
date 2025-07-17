@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 @Service
 public class UfService {
-    private final UfRepository ufRepository;
+    private final UfRepository ufRepository ;
 
     public UfService(UfRepository ufRepository) {
         this.ufRepository = ufRepository;

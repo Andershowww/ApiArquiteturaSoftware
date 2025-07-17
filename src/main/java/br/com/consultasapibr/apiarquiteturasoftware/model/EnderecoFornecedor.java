@@ -42,7 +42,7 @@ public class EnderecoFornecedor {
     public EnderecoFornecedor() {
     }
 
-    public EnderecoFornecedor(Fornecedor fornecedor, Uf uf, EnderecoFornecedorDTO dto) {
+    public EnderecoFornecedor(Fornecedor fornecedor,Uf uf, EnderecoFornecedorDTO dto) {
         this.fornecedor = fornecedor;
         this.uf = uf;
         this.logradouro = dto.getLogradouro();
