@@ -58,6 +58,7 @@ public class ProdutoService {
                 .stream()
                 .map(produto -> {
                     ProdutoDTO dto = new ProdutoDTO();
+                    dto.setCodigo(produto.getCodigo());
                     dto.setNome(produto.getNome());
                     dto.setPreco(produto.getPreco());
                     dto.setDescricao(produto.getDescricao());
