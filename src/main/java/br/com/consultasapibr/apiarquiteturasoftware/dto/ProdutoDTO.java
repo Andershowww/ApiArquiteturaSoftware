@@ -2,6 +2,7 @@ package br.com.consultasapibr.apiarquiteturasoftware.dto;
 
 public class ProdutoDTO {
     private String nome;
+    private String descricao;
     private Double preco;    
     private int estoqueMaximo;
     private int estoqueMinimo;
@@ -15,6 +16,14 @@ public class ProdutoDTO {
 
     public void setEstoqueMaximo(int estoqueMaximo) {
         this.estoqueMaximo = estoqueMaximo;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public int getEstoqueMinimo() {

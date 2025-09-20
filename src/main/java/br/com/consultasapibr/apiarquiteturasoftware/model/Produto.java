@@ -21,6 +21,9 @@ public class Produto {
     private String nome;
 
     @Column(nullable = false)
+    private String descricao;
+
+    @Column(nullable = false)
     private Double preco;
 
     @Column(nullable = false)
@@ -53,6 +56,14 @@ public class Produto {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public Double getPreco() {

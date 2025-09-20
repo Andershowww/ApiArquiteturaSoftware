@@ -28,6 +28,7 @@ public class ProdutoService {
 
         produto.setNome(dto.getNome());
         produto.setPreco(dto.getPreco());
+        produto.setDescricao(dto.getDescricao());
         produto.setEstoqueMinimo(dto.getEstoqueMinimo());
         produto.setEstoqueMaximo(dto.getEstoqueMaximo());
         produto.setEstoqueAtual(dto.getEstoqueAtual());
