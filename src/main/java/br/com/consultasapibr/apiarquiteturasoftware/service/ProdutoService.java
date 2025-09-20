@@ -66,6 +66,7 @@ public class ProdutoService {
                     dto.setEstoqueMinimo(produto.getEstoqueMinimo());
                     dto.setEstoqueAtual(produto.getEstoqueAtual());
                     dto.setCategoriaId(produto.getCategoria().getId());
+                    dto.setCategoriaNome(produto.getCategoria().getNome());
                     return dto;
                 }).toList();
 

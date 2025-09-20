@@ -4,11 +4,13 @@ public class ProdutoDTO {
     private String codigo;
     private String nome;
     private String descricao;
+    private String categoriaNome;
     private Double preco;    
     private int estoqueMaximo;
     private int estoqueMinimo;
     private int estoqueAtual;
     private Integer categoriaId;
+    
 
 
     public String getCodigo() {
@@ -18,7 +20,7 @@ public class ProdutoDTO {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    
+
     public int getEstoqueMaximo() {
         return estoqueMaximo;
     }
@@ -71,5 +73,13 @@ public class ProdutoDTO {
 
     public void setCategoriaId(Integer categoriaId) {
         this.categoriaId = categoriaId;
+    }
+
+    public String getCategoriaNome() {
+        return categoriaNome;
+    }
+
+    public void setCategoriaNome(String categoriaNome) {
+        this.categoriaNome = categoriaNome;
     }
 }
