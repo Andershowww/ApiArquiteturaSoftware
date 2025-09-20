@@ -18,6 +18,9 @@ public class Produto {
     private Integer id;
 
     @Column(nullable = false)
+    private String codigo;
+
+    @Column(nullable = false)
     private String nome;
 
     @Column(nullable = false)
@@ -48,6 +51,14 @@ public class Produto {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {

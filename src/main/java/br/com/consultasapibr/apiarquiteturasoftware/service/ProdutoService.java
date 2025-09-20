@@ -26,6 +26,7 @@ public class ProdutoService {
 
         Produto produto = new Produto();
 
+        produto.setCodigo(dto.getCodigo());
         produto.setNome(dto.getNome());
         produto.setPreco(dto.getPreco());
         produto.setDescricao(dto.getDescricao());

@@ -1,6 +1,7 @@
 package br.com.consultasapibr.apiarquiteturasoftware.dto;
 
 public class ProdutoDTO {
+    private String codigo;
     private String nome;
     private String descricao;
     private Double preco;    
@@ -10,6 +11,14 @@ public class ProdutoDTO {
     private Integer categoriaId;
 
 
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+    
     public int getEstoqueMaximo() {
         return estoqueMaximo;
     }
