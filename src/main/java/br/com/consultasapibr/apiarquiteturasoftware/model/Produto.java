@@ -52,13 +52,13 @@ public class Produto {
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public String getCodigo() {
-        return codigo;
+    
+    public void setCodigo() {
+        this.codigo = "BEB-" + this.id;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public String getCodigo() {
+        return this.codigo;
     }
 
     public String getNome() {

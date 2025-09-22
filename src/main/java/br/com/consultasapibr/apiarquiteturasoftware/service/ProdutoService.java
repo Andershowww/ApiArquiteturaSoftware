@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import br.com.consultasapibr.apiarquiteturasoftware.dto.ProdutoCadastroDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.dto.ProdutoDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Categoria;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Produto;
@@ -22,35 +23,25 @@ public class ProdutoService {
         this.categoriaRepository = categoriaRepository;
     }
 
-    public Produto cadastrarProduto(ProdutoDTO dto) {
+    public Produto cadastrarProduto(ProdutoCadastroDTO dto) {
 
         Produto produto = new Produto();
-
-        produto.setCodigo(dto.getCodigo());
         produto.setNome(dto.getNome());
         produto.setPreco(dto.getPreco());
         produto.setDescricao(dto.getDescricao());
         produto.setEstoqueMinimo(dto.getEstoqueMinimo());
         produto.setEstoqueMaximo(dto.getEstoqueMaximo());
         produto.setEstoqueAtual(dto.getEstoqueAtual());
-
-        if (produto.getEstoqueAtual() > produto.getEstoqueMaximo()) {
-            throw new IllegalArgumentException("Estoque atual não pode ser maior que o estoque máximo");
-        }
-
-        if (produto.getEstoqueAtual() < produto.getEstoqueMinimo()) {
-            throw new IllegalArgumentException("Estoque atual não pode ser menor que o estoque mínimo");
-        }
-
-        if (produto.getEstoqueMinimo() > produto.getEstoqueMaximo()) {
-            throw new IllegalArgumentException("Estoque mínimo não pode ser maior que o estoque máximo");
-        }
+        // Gambiarra para gerar o código antes de salvar
+        produto.setCodigo();
 
         Categoria categoria = categoriaRepository.findById(dto.getCategoriaId())
                 .orElseThrow(() -> new IllegalArgumentException("Categoria não encontrada"));
         produto.setCategoria(categoria);
-
-        return produtoRepository.save(produto);
+        
+        var salvo = produtoRepository.save(produto);
+        produto.setCodigo();
+        return produtoRepository.save(salvo);
     }
 
     public List<ProdutoDTO> listarTodos() {

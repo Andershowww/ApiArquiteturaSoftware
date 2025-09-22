@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.consultasapibr.apiarquiteturasoftware.dto.ProdutoCadastroDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.dto.ProdutoDTO;
 import br.com.consultasapibr.apiarquiteturasoftware.model.Produto;
 import br.com.consultasapibr.apiarquiteturasoftware.service.ProdutoService;
@@ -26,9 +27,9 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody ProdutoDTO produtoDTO) {
+    public ResponseEntity<?> cadastrar(@RequestBody ProdutoCadastroDTO produtoCadastroDTO) {
         try {
-            Produto produto = service.cadastrarProduto(produtoDTO);
+            Produto produto = service.cadastrarProduto(produtoCadastroDTO);
             return ResponseEntity.status(201).body(produto);
         } catch (Exception e) {
             Map<String, String> erro = new HashMap<>();
