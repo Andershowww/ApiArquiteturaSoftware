@@ -83,6 +83,24 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <!-- Spring Security OAuth2  -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+    <!-- Spring Security OAuth2 Client (para autenticar via Google, GitHub, etc.) -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-oauth2-client</artifactId>
+</dependency>
+
+<!-- Spring Security OAuth2 Resource Server (para validar tokens JWT/OAuth2 no backend) -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+</dependency>
   </dependencies>
 
   <build>
