@@ -49,6 +49,7 @@ public class ProdutoService {
                 .stream()
                 .map(produto -> {
                     ProdutoDTO dto = new ProdutoDTO();
+                    dto.setId(produto.getId());
                     dto.setCodigo(produto.getCodigo());
                     dto.setNome(produto.getNome());
                     dto.setPreco(produto.getPreco());
@@ -62,19 +63,5 @@ public class ProdutoService {
                 }).toList();
 
         return produtos;
-    }
-
-    public void atualizarEstoque(Integer id, Integer quantidade) {
-        var produto = this.produtoRepository.findById(id).orElseThrow(() -> 
-        new IllegalArgumentException("Produto não encontrado"));
-
-        var estoque = produto.getEstoqueAtual() + quantidade;
-
-        if (estoque > produto.getEstoqueMaximo()) {
-            return;
-        }
-
-        produto.setEstoqueAtual(produto.getEstoqueAtual() + quantidade);
-        this.produtoRepository.save(produto);
     }
 }

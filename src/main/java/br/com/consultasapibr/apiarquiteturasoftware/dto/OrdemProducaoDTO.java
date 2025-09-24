@@ -1,28 +1,28 @@
 package br.com.consultasapibr.apiarquiteturasoftware.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class OrdemProducaoDTO {
         
-    private LocalDateTime dataEmissao;
-    private LocalDateTime dataPrevisao;
+    private LocalDate dataEmissao;
+    private LocalDate dataPrevisao;
     private String observacao;
     private Integer produtoId;
     private Integer quantidade;
 
-    public LocalDateTime getDataEmissao() {
+    public LocalDate getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(LocalDateTime dataEmissao) {
+    public void setDataEmissao(LocalDate dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
-    public LocalDateTime getDataPrevisao() {
+    public LocalDate getDataPrevisao() {
         return dataPrevisao;
     }
 
-    public void setDataPrevisao(LocalDateTime dataPrevisao) {
+    public void setDataPrevisao(LocalDate dataPrevisao) {
         this.dataPrevisao = dataPrevisao;
     }
 

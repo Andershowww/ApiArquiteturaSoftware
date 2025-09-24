@@ -1,7 +1,5 @@
 package br.com.consultasapibr.apiarquiteturasoftware.service;
 
-import java.time.LocalDateTime;
-
 import org.springframework.stereotype.Service;
 
 import br.com.consultasapibr.apiarquiteturasoftware.dto.OrdemProducaoDTO;
@@ -15,12 +13,10 @@ public class OrdemProducaoService {
 
     private final ProdutoRepository produtoRepository;
     private final OrdemProducaoRepository ordemProducaoRepository;
-    private final ProdutoService produtoService;
 
     public OrdemProducaoService(ProdutoRepository produtoRepository, OrdemProducaoRepository ordemProducaoRepository, ProdutoService produtoService) {
         this.produtoRepository = produtoRepository;
         this.ordemProducaoRepository = ordemProducaoRepository;
-        this.produtoService = produtoService;
     }
 
     public OrdemProducao gerarOrdemProducao(OrdemProducaoDTO dto) {
@@ -37,21 +33,5 @@ public class OrdemProducaoService {
 
         return ordemProducaoRepository.save(ordemProducao);
 
-    }
-
-    public void atualizarProducao() {
-        var ordens = ordemProducaoRepository.findAll();
-        LocalDateTime agora = LocalDateTime.now();
-
-        for (var ordem : ordens) {
-            LocalDateTime dataPrevisao = ordem.getDataPrevisao();
-
-            if (dataPrevisao.isBefore(agora) == false) {
-                Integer produtoId = ordem.getProduto().getId();
-                Integer quantidade = ordem.getQuantidade();
-
-                produtoService.atualizarEstoque(produtoId, quantidade);
-            }
-        }
     }
 }

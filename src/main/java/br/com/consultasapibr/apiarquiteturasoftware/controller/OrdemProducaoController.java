@@ -24,7 +24,7 @@ public class OrdemProducaoController {
     }
     
 
-    @PostMapping("/gerar-ordem-producao")
+    @PostMapping
     public ResponseEntity<?> gerarOrdemProducao(@RequestBody OrdemProducaoDTO ordemProducaoDTO) {
         try {
             OrdemProducao ordemProducao = service.gerarOrdemProducao(ordemProducaoDTO);
@@ -32,19 +32,6 @@ public class OrdemProducaoController {
         } catch (Exception e) {
             Map<String, String> erro = new HashMap<>();
             erro.put("mensagem", "Erro ao gerar ordem de produção");
-            erro.put("detalhe", e.getMessage());
-            return ResponseEntity.status(400).body(erro);
-        }
-    }
-
-    @PostMapping("/atualizar-producao")
-    public ResponseEntity<?> atualizarProducao() {
-        try {
-            this.service.atualizarProducao();
-            return ResponseEntity.status(200).body("Produção atualizada com sucesso");
-        } catch (Exception e) {
-            Map<String, String> erro = new HashMap<>();
-            erro.put("mensagem", "Erro ao Atualizar a produção");
             erro.put("detalhe", e.getMessage());
             return ResponseEntity.status(400).body(erro);
         }

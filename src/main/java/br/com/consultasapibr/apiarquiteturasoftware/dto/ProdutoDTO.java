@@ -1,6 +1,7 @@
 package br.com.consultasapibr.apiarquiteturasoftware.dto;
 
 public class ProdutoDTO {
+    private int id;
     private String codigo;
     private String nome;
     private String descricao;
@@ -11,8 +12,6 @@ public class ProdutoDTO {
     private int estoqueAtual;
     private Integer categoriaId;
     
-
-
     public String getCodigo() {
         return codigo;
     }
@@ -81,5 +80,13 @@ public class ProdutoDTO {
 
     public void setCategoriaNome(String categoriaNome) {
         this.categoriaNome = categoriaNome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

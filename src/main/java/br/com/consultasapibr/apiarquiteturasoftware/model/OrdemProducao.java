@@ -1,5 +1,5 @@
 package br.com.consultasapibr.apiarquiteturasoftware.model;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,10 +18,10 @@ public class OrdemProducao {
     private Integer id;
 
     @Column(nullable = false)
-    private LocalDateTime dataEmissao;
+    private LocalDate dataEmissao;
 
     @Column(nullable = false)
-    private LocalDateTime dataPrevisao;
+    private LocalDate dataPrevisao;
 
     @Column(nullable = false)
     private Integer quantidade;
@@ -42,19 +42,19 @@ public class OrdemProducao {
         this.id = id;
     }
 
-    public LocalDateTime getDataEmissao() {
+    public LocalDate getDataEmissao() {
         return dataEmissao;
     }
 
-    public void setDataEmissao(LocalDateTime dataEmissao) {
+    public void setDataEmissao(LocalDate dataEmissao) {
         this.dataEmissao = dataEmissao;
     }
 
-    public LocalDateTime getDataPrevisao() {
+    public LocalDate getDataPrevisao() {
         return dataPrevisao;
     }
 
-    public void setDataPrevisao(LocalDateTime dataPrevisao) {
+    public void setDataPrevisao(LocalDate dataPrevisao) {
         this.dataPrevisao = dataPrevisao;
     }
 
