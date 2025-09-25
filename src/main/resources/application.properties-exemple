@@ -1,4 +1,4 @@
-spring.datasource.url=jdbc:sqlserver://SEUSERVIDOR;databaseName=SEUBANCO;encrypt=true;trustServerCertificate=true;
+spring.datasource.url=jdbc:sqlserver://8080;databaseName=SEUBANCO;encrypt=true;trustServerCertificate=true;
 spring.datasource.username=SeuUser
 spring.datasource.password=SuaSenha
 spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver

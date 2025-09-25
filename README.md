@@ -1,6 +1,7 @@
 # ApiArquiteturaSoftware
 
-Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https://brasilapi.com.br/)
+API para estudos referente a pós-graduação em Engenharia de Software.
+Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https://brasilapi.com.br/).
 
 ---
 
@@ -8,18 +9,25 @@ Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https
 
 - [ApiArquiteturaSoftware](#apiarquiteturasoftware)
   - [Índice](#índice)
+  - [Resumo](#resumo)
   - [Descrição](#descrição)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-  - [Estrutura do Projeto](#estrutura-do-projeto)
+  - [Arquitetura e Estrutura do Projeto](#arquitetura-e-estrutura-do-projeto)
   - [Como Rodar o Projeto](#como-rodar-o-projeto)
     - [Pré-requisitos](#pré-requisitos)
     - [Script de criação tabelas SQL Server](#script-de-criação-tabelas-sql-server)
     - [Script Insert UF](#script-insert-uf)
     - [Passos](#passos)
-  - [Exemplos de Uso](#exemplos-de-uso)
-  - [Padrões de Código e Organização](#padrões-de-código-e-organização)
+    - [Exemplos de Uso](#exemplos-de-uso)
+    - [Padrões de Código e Organização](#padrões-de-código-e-organização)
 
 ---
+
+## Resumo
+
+Esta API realiza a gestão de fornecedores, permitindo 
+consulta e cadastro de informações, seguindo boas práticas de arquitetura em camadas 
+e integração com fontes externas de dados do Brasil.
 
 ## Descrição
 
@@ -50,7 +58,17 @@ Util: utilitários auxiliares (ex: conversão, respostas padronizadas)
 
 ---
 
-## Estrutura do Projeto
+## Arquitetura e Estrutura do Projeto
+
+O projeto segue uma arquitetura em camadas:
+
+- **Controller**: Recebe requisições HTTP e responde via API REST.
+- **Service**: Lógica de negócio e integração com APIs externas.
+- **Repository**: Persistência de dados (SQL Server, H2).
+- **Model**: Entidades do domínio.
+- **DTO**: Objetos de transferência de dados (entrada/saída).
+- **Util**: Classes utilitárias (ex: conversão, respostas padronizadas).
+
 
 ```
 ApiArquiteturaSoftware/
@@ -67,7 +85,6 @@ ApiArquiteturaSoftware/
 │   │   │       └── ApiArquiteturaSoftwareApplication.java  # Classe principal
 │   │   └── resources/
 │   │       └── application.properties       # Configurações principais       
-│   │       
 │   └── test/
 │       └── java/
 │           └── br/com/consultasapibr/apiarquiteturasoftware/  # Testes automatizados
@@ -75,12 +92,6 @@ ApiArquiteturaSoftware/
 └── README.md
 ```
 
-- **controller/**: Endpoints/rest controllers.
-- **service/**: Lógica de negócio.
-- **repository/**: Persistência de dados.
-- **model/**: Entidades do sistema.
-- **dto/**: Objetos de transferência de dados.
-- **util/**: Classes utilitárias.
 ---
 
 ## Como Rodar o Projeto
@@ -90,6 +101,7 @@ ApiArquiteturaSoftware/
 - Java 17 ou superior
 - Maven 3.6+
 - (Opcional) IntelliJ IDEA - VScode com Extensões para compilar o projeto
+
 ### Script de criação de banco de dados e suas tabelas SQL Server
 
 ```sql
@@ -168,12 +180,12 @@ GO
 
 ```
 
-### Passos
+### Passos para Execução
 
 1. Clone o repositório:
     ```bash
     git clone https://github.com/Andershowww/ApiArquiteturaSoftware.git
-    cd ApiApiArquiteturaSoftware/apiarquiteturasoftware/
+    cd ApiArquiteturaSoftware/
     ```
 
 2. Compile o projeto:
