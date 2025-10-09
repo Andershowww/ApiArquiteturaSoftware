@@ -23,7 +23,6 @@ public class OrdemProducaoController {
         this.service = service;
     }
     
-
     @PostMapping
     public ResponseEntity<?> gerarOrdemProducao(@RequestBody OrdemProducaoDTO ordemProducaoDTO) {
         try {

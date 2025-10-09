@@ -40,8 +40,8 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProdutoDTO>> listarTodos() {
-        List<ProdutoDTO> produtos = service.listarTodos();
-        return ResponseEntity.ok(produtos);
-    }
+public ResponseEntity<List<ProdutoDTO>> listarTodos() {
+    List<ProdutoDTO> produtos = service.listarTodos();
+    return ResponseEntity.ok(produtos);
+}
 }
