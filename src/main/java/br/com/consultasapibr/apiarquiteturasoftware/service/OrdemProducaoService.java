@@ -1,5 +1,8 @@
 package br.com.consultasapibr.apiarquiteturasoftware.service;
 
+import java.time.LocalDate;
+
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import br.com.consultasapibr.apiarquiteturasoftware.dto.OrdemProducaoDTO;
@@ -14,9 +17,12 @@ public class OrdemProducaoService {
     private final ProdutoRepository produtoRepository;
     private final OrdemProducaoRepository ordemProducaoRepository;
 
+    private final ProdutoService produtoService;
+
     public OrdemProducaoService(ProdutoRepository produtoRepository, OrdemProducaoRepository ordemProducaoRepository, ProdutoService produtoService) {
         this.produtoRepository = produtoRepository;
         this.ordemProducaoRepository = ordemProducaoRepository;
+        this.produtoService = produtoService;
     }
 
     public OrdemProducao gerarOrdemProducao(OrdemProducaoDTO dto) {
@@ -33,5 +39,16 @@ public class OrdemProducaoService {
 
         return ordemProducaoRepository.save(ordemProducao);
 
+    }
+
+    @Scheduled(cron = "0 20 21 * * ?", zone = "America/Sao_Paulo")
+    public void atualizarQuantidadeOrdemProducao() {
+        System.out.println("Atualizando os produtos conforme as ordens de produção");
+        var ordens = ordemProducaoRepository.findAll();
+        for (OrdemProducao ordem : ordens) {
+            if (ordem.getDataPrevisao().isEqual(LocalDate.now())) {
+                this.produtoService.atualizarProdutoQuantidade(ordem.getProduto().getId(), ordem.getQuantidade());
+            }
+        }
     }
 }

@@ -64,4 +64,12 @@ public class ProdutoService {
 
         return produtos;
     }
+    
+    public void atualizarProdutoQuantidade(Integer produtoId, Integer quantidade) {
+        var produto = produtoRepository.findById(produtoId).stream().findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Produto não encontrado"));
+
+        produto.setEstoqueAtual(produto.getEstoqueAtual() + quantidade);
+        produtoRepository.save(produto);
+    }
 }
