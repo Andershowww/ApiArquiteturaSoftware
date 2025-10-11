@@ -17,16 +17,12 @@ public class CategoriaController {
 
     private final CategoriaService service;
 
-    // ✅ Construtor correto
     public CategoriaController(CategoriaService service) {
         this.service = service;
     }
 
-    // ✅ O Principal pode ser recebido aqui se quiser saber quem está autenticado
     @GetMapping
-    public ResponseEntity<List<CategoriaDTO>> listarCategorias() {
-        // Exemplo: obter email do usuário autenticado (vindo do JWT)
-    
+    public ResponseEntity<List<CategoriaDTO>> listarCategorias() {    
         List<CategoriaDTO> categorias = service.listarCategorias();
         return ResponseEntity.ok(categorias);
     }

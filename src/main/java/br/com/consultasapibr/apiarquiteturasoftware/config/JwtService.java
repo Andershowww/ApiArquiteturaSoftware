@@ -10,8 +10,8 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "sua_chave_secreta_grande_e_bem_dificil"; // use env var
-    private static final long EXPIRATION_TIME = 1000 * 60 * 60; // 1 hora
+    private static final String SECRET_KEY = "fJfSkb3W7F5fPZQvQohS7b7PpXh1xN5Tb9m/jc1ySM4="; // use env var
+    private static final long EXPIRATION_TIME = 1000 * 60 * 60; 
 
     private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
@@ -52,7 +52,6 @@ public class JwtService {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
     }
 
-    // Valida e retorna o "subject" do token
     public String validateTokenAndGetSubject(String token) {
         try {
             return Jwts.parserBuilder()
