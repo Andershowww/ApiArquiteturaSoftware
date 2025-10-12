@@ -8,6 +8,8 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Configuration
 public class SecurityConfig {
 
@@ -16,48 +18,51 @@ public class SecurityConfig {
         JwtAuthenticationFilter jwtAuthFilter = new JwtAuthenticationFilter(jwtService);
 
         http
-            // Desativa CSRF, necessário para APIs
-            .csrf(csrf -> csrf.disable())
-            // Sem sessão: cada requisição precisa de JWT
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                // Desativa CSRF, necessário para APIs
+                .csrf(csrf -> csrf.disable())
+                // Sem sessão: cada requisição precisa de JWT
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
-            // Regras de autorização
-            .authorizeHttpRequests(auth -> auth
-                // Endpoints públicos
-                .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                // APIs protegidas via JWT
-                .requestMatchers("/api/**").authenticated()
-                // Qualquer outra rota (ex: login via navegador) fica liberada
-                .anyRequest().permitAll()
-            )
+                // Regras de autorização
+                .authorizeHttpRequests(auth -> auth
+                        // Endpoints públicos
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .anyRequest().authenticated())
 
-            // JWT filter antes do UsernamePasswordAuthenticationFilter
-            .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                // JWT filter antes do UsernamePasswordAuthenticationFilter
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 
-            // Login via OAuth2 apenas para navegador
-            .oauth2Login(oauth2 -> oauth2
-                .loginPage("/login") // página de login do navegador
-                .successHandler((request, response, authentication) -> {
-                    OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
-                    String email = oAuth2User.getAttribute("email");
+                // Login via OAuth2 apenas para navegador
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/login") // página de login do navegador
+                        .successHandler((request, response, authentication) -> {
+                            OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+                            String email = oAuth2User.getAttribute("email");
 
-                    // Gera token JWT
-                    String jwt = jwtService.generateToken(email);
+                            // Gera token JWT
+                            String jwt = jwtService.generateToken(email);
 
-                    // Redireciona pro frontend com o token
-                    response.sendRedirect("http://localhost:3000/login/success?token=" + jwt);
-                })
-            )
+                            // Redireciona pro frontend com o token
+                            response.sendRedirect("http://localhost:3000/login/success?token=" + jwt);
+                        }))
 
-            // Tratamento de erro para APIs: retorna 401, não redireciona
-            .exceptionHandling(ex -> ex
-                .authenticationEntryPoint((req, res, authEx) -> res.sendError(401, "Token inválido ou ausente"))
-            )
+                // Tratamento de erro para APIs: retorna 401, não redireciona
+                .exceptionHandling(ex -> ex
+                        .authenticationEntryPoint((request, response, authException) -> {
+                            response.setContentType("application/json");
+                            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
-            // Logout
-            .logout(logout -> logout
-                .logoutSuccessUrl("/public/logout-success").permitAll()
-            );
+                            // Monta JSON simples
+                            String json = String.format(
+                                    "{\"status\":401,\"error\":\"Unauthorized\",\"message\":\"%s\",\"path\":\"%s\"}",
+                                    "Token invalido ou ausente",
+                                    request.getRequestURI());
+
+                            response.getWriter().write(json);
+                        }))
+                // Logout
+                .logout(logout -> logout
+                        .logoutSuccessUrl("/public/logout-success").permitAll());
 
         return http.build();
     }
