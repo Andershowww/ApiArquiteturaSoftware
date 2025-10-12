@@ -1,12 +1,12 @@
-# ApiArquiteturaSoftware
+# backend-tarefa1-projeto-desenvolvimento-webapp
 
-Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https://brasilapi.com.br/)
+Projeto backend em Java + Spring Boot
 
 ---
 
 ## Índice
 
-- [ApiArquiteturaSoftware](#apiarquiteturasoftware)
+- [backend-tarefa1-projeto-desenvolvimento-webapp](#backend-tarefa1-projeto-desenvolvimento-webapp)
   - [Índice](#índice)
   - [Descrição](#descrição)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
@@ -23,8 +23,8 @@ Projeto backend em Java + Spring Boot, com integração à [API do Brasil](https
 
 ## Descrição
 
-Este projeto tem como objetivo fornecer uma API para consulta e cadastro de fornecedores.
-A API para gestão de fornecedores que segue boas práticas de arquitetura em camadas:
+Este projeto tem como objetivo fornecer uma API para nosso projeto que consiste em um software com dashboards, 
+cadastro de produtos e cadastro de ordem de produção:
 
 Controller: recebe requisições HTTP e responde com dados via API REST
 
