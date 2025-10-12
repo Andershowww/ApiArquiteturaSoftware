@@ -3,12 +3,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>br.com.consultasapibr</groupId>
-  <artifactId>apiarquiteturasoftware</artifactId>
+  <groupId>br.com.gestaoproducao</groupId>
+  <artifactId>api</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
-  <name>apiarquiteturasoftware</name>
+  <name>api</name>
   <description>API para trabalho de desenvolvimento de software com Spring Boot e SQLite</description>
 
   <parent>
