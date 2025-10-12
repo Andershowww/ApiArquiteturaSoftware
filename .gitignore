@@ -1,68 +1,73 @@
+# JAVA / MAVEN
 target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-# Compiled Java class files
 *.class
-application.properties
-# Build output
-bin/
-out/
-
-# Logs
-*.log
-
-# Local environment/properties (não versionar configs sensíveis/locais)
-src/main/resources/application-prod.properties
-
-# SQLite database files (se geradas localmente pelo app)
-*.sqlite
-*.db
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+*.jar
+*.war
+*.ear
 *.iml
+*.log
+hs_err_pid*
+replay_pid*
+mvnw.cmd
+mvnw
+.mvn/
+
+
+# SPRING BOOT CONFIG
+application-secrets.properties
+application-local.properties
+application-docker.properties
+application-test.properties
+*.env
+*.env.*
+.env
+.env.local
+.envrc
+
+
+# DOCKER
+.docker/
+docker-compose.override.yml
+docker-compose.local.yml
+Dockerfile.*
+docker-compose.yml
+!.env.example
+
+# IDEs / EDITORS
+# IntelliJ IDEA
+.idea/
+*.iws
 *.ipr
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# VS Code
 .vscode/
+.history/
+*.code-workspace
 
-### Mac OS ###
+# Eclipse
+.project
+.classpath
+.settings/
+.metadata/
+bin/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+
+# SENSITIVE FILES
+*.key
+*.pem
+*.crt
+*.p12
+*.jks
+*.keystore
+
+# SYSTEM
 .DS_Store
-/.idea/
-
-# Arquivos temporários e backup
-*~
-*.swp
-
-# Arquivos de cobertura de teste
-coverage/
-jacoco.exec
+Thumbs.db

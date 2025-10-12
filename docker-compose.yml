@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      SA_PASSWORD: "senhaAqui"
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+  # cria o banco uma única vez antes da API subir
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    depends_on:
+      - db
+    entrypoint: ["/bin/bash","-lc"]
+    command: >
+      "/opt/mssql-tools/bin/sqlcmd -S db -U sa -P 'Strong@Pass123'
+      -Q \"IF DB_ID('ApiArquiteturaDB') IS NULL CREATE DATABASE ApiArquiteturaDB;\""
+    restart: "no"
+
+  api:
+    build: .
+    container_name: apiarquitetura
+    depends_on:
+      - db
+      - db-init
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    ports:
+      - "8080:8080"
+    restart: always
+
+volumes:
+  mssql_data:

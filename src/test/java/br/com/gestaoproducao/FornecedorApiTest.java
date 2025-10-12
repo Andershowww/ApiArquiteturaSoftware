@@ -11,8 +11,12 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+
 @SpringBootTest(classes = GestaoProducao.class)
 @AutoConfigureMockMvc
+@ActiveProfiles("docker")
 class FornecedorApiTest {
 
     @Autowired
@@ -46,8 +50,8 @@ class FornecedorApiTest {
                                 """;
 
         mockMvc.perform(post("/fornecedores")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(novoFornecedor))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(novoFornecedor))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.cnpj").value("19131243000197"));
     }
