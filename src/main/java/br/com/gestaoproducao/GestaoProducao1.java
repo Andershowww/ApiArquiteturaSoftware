@@ -8,11 +8,11 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class GestaoProducao {
-    private static final Logger logger = LoggerFactory.getLogger(GestaoProducao.class);
+public class GestaoProducao1 {
+    private static final Logger logger = LoggerFactory.getLogger(GestaoProducao1.class);
 
     public static void main(String[] args) {
-        SpringApplication.run(GestaoProducao.class, args);
+        SpringApplication.run(GestaoProducao1.class, args);
         logger.info("Servidor Spring Boot iniciado com sucesso!");
         logger.info("Inicie as chamadas aos endpoints desejados");
         logger.info("Se preferir, use o swagger: \"http://localhost:8080/swagger-ui.html\"");
