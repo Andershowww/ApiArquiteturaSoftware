@@ -5,23 +5,22 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sqlserver
     environment:
-      SA_PASSWORD: "senhaAqui"
+      SA_PASSWORD: "${MSSQL_PASSWORD}"
       ACCEPT_EULA: "Y"
       MSSQL_PID: "Developer"
     ports:
-      - "1433:1433"
+      - "${DB_PORT}:1433"
     volumes:
       - mssql_data:/var/opt/mssql
 
-  # cria o banco uma única vez antes da API subir
   db-init:
     image: mcr.microsoft.com/mssql/server:2022-latest
     depends_on:
       - db
-    entrypoint: ["/bin/bash","-lc"]
+    entrypoint: ["/bin/bash", "-lc"]
     command: >
-      "/opt/mssql-tools/bin/sqlcmd -S db -U sa -P 'Strong@Pass123'
-      -Q \"IF DB_ID('ApiArquiteturaDB') IS NULL CREATE DATABASE ApiArquiteturaDB;\""
+      "/opt/mssql-tools/bin/sqlcmd -S db -U ${MSSQL_USER} -P '${MSSQL_PASSWORD}'
+      -Q \"IF DB_ID('${MSSQL_DB}') IS NULL CREATE DATABASE ${MSSQL_DB};\""
     restart: "no"
 
   api:
@@ -33,7 +32,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: docker
     ports:
-      - "8080:8080"
+      - "${APP_PORT}:8080"
     restart: always
 
 volumes:
