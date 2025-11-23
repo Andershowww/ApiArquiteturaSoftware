@@ -159,31 +159,31 @@ ApiArquiteturaSoftware/
     ```
     
 - **Cadastrar fornecedor:**
-      ```
+    ```
       POST http://localhost:8080/OrdemProducao
       Content-Type: application/json
-          {
-	            "numeroOrdem": "OP-2024-001",
-	            "produto": "Smartphone XYZ",
-	            "quantidade": 500,
-	            "dataInicio": "2024-01-15",
-	            "dataPrevisaoConclusao": "2024-01-30",
-	            "status": "PLANEJADA",
-              "materiais": [
-		              {
-			                  "material": "Tela 6.5\"",
-		                    "quantidade": 500,
-			                  "unidade": "UN"
-		              },
-		              {
-			                  "material": "Processador Snapdragon",
-			                  "quantidade": 500,
-			                  "unidade": "UN"
-		              }
-	            ],
-	            "observacoes": "Ordem de produção para lote inicial"
-          }
-      ```
+       {
+            "numeroOrdem": "OP-2024-001",
+            "produto": "Smartphone XYZ",
+            "quantidade": 500,
+            "dataInicio": "2024-01-15",
+            "dataPrevisaoConclusao": "2024-01-30",
+            "status": "PLANEJADA",
+            "materiais": [
+                {
+                    "material": "Tela 6.5\"",
+                    "quantidade": 500,
+                    "unidade": "UN"
+                },
+                {
+                    "material": "Processador Snapdragon",
+                    "quantidade": 500,
+                    "unidade": "UN"
+                }
+            ],
+            "observacoes": "Ordem de produção para lote inicial"
+        }
+    ```
 ---
 
 ## Padrões de Código e Organização
