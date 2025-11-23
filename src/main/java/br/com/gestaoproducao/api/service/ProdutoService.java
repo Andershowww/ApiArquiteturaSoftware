@@ -34,7 +34,6 @@ public class ProdutoService {
         produto.setEstoqueMinimo(dto.getEstoqueMinimo());
         produto.setEstoqueMaximo(dto.getEstoqueMaximo());
         produto.setEstoqueAtual(dto.getEstoqueAtual());
-        // Gambiarra para gerar o código antes de salvar
         produto.setCodigo();
 
         Categoria categoria = categoriaRepository.findById(dto.getCategoriaId())

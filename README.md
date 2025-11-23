@@ -162,27 +162,13 @@ ApiArquiteturaSoftware/
     ```
       POST http://localhost:8080/OrdemProducao
       Content-Type: application/json
-       {
-            "numeroOrdem": "OP-2024-001",
-            "produto": "Smartphone XYZ",
+      {
+            "dataEmissao": "2024-01-15",
+            "dataPrevisao": "2024-01-30",
             "quantidade": 500,
-            "dataInicio": "2024-01-15",
-            "dataPrevisaoConclusao": "2024-01-30",
-            "status": "PLANEJADA",
-            "materiais": [
-                {
-                    "material": "Tela 6.5\"",
-                    "quantidade": 500,
-                    "unidade": "UN"
-                },
-                {
-                    "material": "Processador Snapdragon",
-                    "quantidade": 500,
-                    "unidade": "UN"
-                }
-            ],
-            "observacoes": "Ordem de produção para lote inicial"
-        }
+            "observacao": "Ordem de produção para lote inicial do produto XYZ",
+            "produtoId": 1
+      }
     ```
 ---
 

@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class GestaoProducao {
     private static final Logger logger = LoggerFactory.getLogger(GestaoProducao.class);
-
+//entry point da aplicacao
     public static void main(String[] args) {
         SpringApplication.run(GestaoProducao.class, args);
         logger.info("Servidor Spring Boot iniciado com sucesso!");
