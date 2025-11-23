@@ -158,7 +158,7 @@ ApiArquiteturaSoftware/
         }
     ```
     
-- **Cadastrar fornecedor:**
+- **Cadastrar ordem de produção:**
     ```
       POST http://localhost:8080/OrdemProducao
       Content-Type: application/json
