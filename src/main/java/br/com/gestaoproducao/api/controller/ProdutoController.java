@@ -42,7 +42,6 @@ public class ProdutoController {
     }
 
     @GetMapping
-     @RoleProtected({"ADMIN", "GERENTE"})
     public ResponseEntity<List<ProdutoDTO>> listarTodos() {
         List<ProdutoDTO> produtos = service.listarTodos();
         return ResponseEntity.ok(produtos);

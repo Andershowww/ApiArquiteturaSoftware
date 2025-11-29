@@ -35,7 +35,7 @@ public class RoleApect {
     private String obterPerfilDoUsuarioSimulado() {
         // Aqui você simula o perfil
         // Pode trocar manualmente para testar
-        return "ASSISTENTE";
+        return "GERENTE";
     }
 }
 
