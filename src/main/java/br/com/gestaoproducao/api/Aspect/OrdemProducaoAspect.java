@@ -1,4 +1,4 @@
-package br.com.gestaoproducao.api.Aspect;
+package br.com.gestaoproducao.api.aspect;
 
 
 import org.aspectj.lang.JoinPoint;

@@ -1,4 +1,4 @@
-package br.com.gestaoproducao.api.Aspect;
+package br.com.gestaoproducao.api.aspect;
 
 import br.com.gestaoproducao.api.model.OrdemProducao;
 import org.aspectj.lang.annotation.AfterReturning;
