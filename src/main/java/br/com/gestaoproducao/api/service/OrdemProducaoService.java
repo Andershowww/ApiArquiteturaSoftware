@@ -43,6 +43,20 @@ public class OrdemProducaoService {
 
     }
 
+    public OrdemProducao atualizarOrdemProducao(int id, OrdemProducaoDTO dto) {
+    OrdemProducao ordemExistente = ordemProducaoRepository.findById(id)
+            .orElseThrow(() -> new RuntimeException("Ordem não encontrada: " + id));
+
+    // Atualiza os campos necessários
+    ordemExistente.setQuantidade(dto.getQuantidade());
+    ordemExistente.setDataPrevisao(dto.getDataPrevisao());
+    ordemExistente.setProduto(produtoRepository.findById(dto.getProdutoId())
+            .orElseThrow(() -> new RuntimeException("Produto não encontrado: " + dto.getProdutoId())));
+
+    return ordemProducaoRepository.save(ordemExistente);
+}
+
+
     @Scheduled(cron = "0 20 21 * * ?", zone = "America/Sao_Paulo")
     public void atualizarQuantidadeOrdemProducao() {
         System.out.println("Atualizando os produtos conforme as ordens de produção");
