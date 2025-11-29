@@ -16,10 +16,7 @@ public class NotificacaoOrdemProducaoAspect {
     /**
      * Notificação após criar uma ordem de produção
      */
-    @AfterReturning(
-            pointcut = "execution(* br.com.gestaoproducao.api.service.OrdemProducaoService.gerarOrdemProducao(..))",
-            returning = "ordem"
-    )
+    @AfterReturning(pointcut = "execution(* br.com.gestaoproducao.api.service.OrdemProducaoService.gerarOrdemProducao(..))", returning = "ordem")
     public void notificarCriacaoOrdem(OrdemProducao ordem) {
         if (ordem == null) {
             return;
@@ -30,8 +27,7 @@ public class NotificacaoOrdemProducaoAspect {
                 ordem.getId(),
                 ordem.getProduto() != null ? ordem.getProduto().getNome() : "N/D",
                 ordem.getQuantidade(),
-                ordem.getDataPrevisao()
-        );
+                ordem.getDataPrevisao());
 
         // Simula notificação no console
         System.out.println(mensagemConsole);
@@ -44,10 +40,7 @@ public class NotificacaoOrdemProducaoAspect {
      * Notificação após atualizar uma ordem de produção
      * (quando você criar o método de atualização no service)
      */
-    @AfterReturning(
-            pointcut = "execution(* br.com.gestaoproducao.api.service.OrdemProducaoService.atualizar*(..))",
-            returning = "ordem"
-    )
+    @AfterReturning(pointcut = "execution(* br.com.gestaoproducao.api.service.OrdemProducaoService.atualizar*(..))", returning = "ordem")
     public void notificarAtualizacaoOrdem(OrdemProducao ordem) {
         if (ordem == null) {
             return;
@@ -58,8 +51,7 @@ public class NotificacaoOrdemProducaoAspect {
                 ordem.getId(),
                 ordem.getProduto() != null ? ordem.getProduto().getNome() : "N/D",
                 ordem.getQuantidade(),
-                ordem.getDataPrevisao()
-        );
+                ordem.getDataPrevisao());
 
         System.out.println(mensagemConsole);
         logger.info(mensagemConsole);
