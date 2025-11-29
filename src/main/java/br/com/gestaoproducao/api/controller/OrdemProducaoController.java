@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.gestaoproducao.api.config.RoleProtected;
 import br.com.gestaoproducao.api.dto.OrdemProducaoDTO;
 import br.com.gestaoproducao.api.model.OrdemProducao;
 import br.com.gestaoproducao.api.service.OrdemProducaoService;
@@ -25,6 +26,7 @@ public class OrdemProducaoController {
     }
     
     @PostMapping
+    @RoleProtected({"ADMIN", "GERENTE","ANALISTA"})
     public ResponseEntity<?> gerarOrdemProducao(@RequestBody OrdemProducaoDTO ordemProducaoDTO) {
         try {
             OrdemProducao ordemProducao = service.gerarOrdemProducao(ordemProducaoDTO);

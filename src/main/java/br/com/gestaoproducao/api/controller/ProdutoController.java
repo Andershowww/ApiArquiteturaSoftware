@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.gestaoproducao.api.config.RoleProtected;
 import br.com.gestaoproducao.api.dto.ProdutoCadastroDTO;
 import br.com.gestaoproducao.api.dto.ProdutoDTO;
 import br.com.gestaoproducao.api.model.Produto;
 import br.com.gestaoproducao.api.service.ProdutoService;
-
-
 
 @RestController
 @RequestMapping("/produtos")
@@ -29,6 +28,7 @@ public class ProdutoController {
     }
 
     @PostMapping
+
     public ResponseEntity<?> cadastrar(@RequestBody ProdutoCadastroDTO produtoCadastroDTO) {
         try {
             Produto produto = service.cadastrarProduto(produtoCadastroDTO);
@@ -42,8 +42,9 @@ public class ProdutoController {
     }
 
     @GetMapping
-public ResponseEntity<List<ProdutoDTO>> listarTodos() {
-    List<ProdutoDTO> produtos = service.listarTodos();
-    return ResponseEntity.ok(produtos);
-}
+     @RoleProtected({"ADMIN", "GERENTE"})
+    public ResponseEntity<List<ProdutoDTO>> listarTodos() {
+        List<ProdutoDTO> produtos = service.listarTodos();
+        return ResponseEntity.ok(produtos);
+    }
 }
